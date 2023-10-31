@@ -47,7 +47,8 @@ return [
                     'css/codemirror.min.css' => 1,
                     'css/bootstrap-plugins.min.css' => 1,
                     'css/Chart.min.css' => 1,
-                    'css/summernote.min.css' => 1
+                    'css/summernote.min.css' => 1,
+                    'css/main.css' => 1,
                 ],
                 'js' => []
             ],

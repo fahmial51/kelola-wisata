@@ -1,0 +1,51 @@
+a {
+
+    color: #212529;
+
+}
+
+.list-group-form input:checked + .list-group-item, .list-group-item.active {
+
+    background-color: #212529;
+
+    border-color: #212529;
+
+}
+
+.bg-primary {
+
+    background-color: #212529 !important;
+
+}
+
+.btn-primary {
+
+    background-color: #212529;
+
+    border-color: #212529;
+
+}
+
+.show > .btn-primary.dropdown-toggle {
+
+    background-color: #212529;
+
+}
+
+.btn-primary:hover,
+
+.btn-primary:active,
+
+.btn-primary:focus  {
+
+    background-color: #343A40;
+
+    border-color: #343A40;
+
+}
+
+.vertical-menu-light li.active > a {
+
+    color: #212529;
+
+}
