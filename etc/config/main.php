@@ -3,7 +3,7 @@
 return [
     'name' => 'Admin Wisata',
     'version' => '0.0.1',
-    'host' => 'wisata-admin.test',
+    'host' => 'admin-wisata.test',
     'timezone' => 'Asia/Jakarta',
     'install' => '2023-10-31 10:08:03',
     'secure' => FALSE,
@@ -18,7 +18,7 @@ return [
                 'configs' => [
                     'main' => [
                         'host' => 'localhost',
-                        'user' => 'root',
+                        'user' => 'devteam',
                         'dbname' => 'wisata',
                         'passwd' => '8473'
                     ]
@@ -29,7 +29,7 @@ return [
     'libUpload' => [
         'base' => [
             'local' => 'media',
-            'host' => 'http://wisata-admin.test/media/'
+            'host' => 'http://admin-wisata.test/media/'
         ]
     ]
 ];

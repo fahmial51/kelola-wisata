@@ -44,5 +44,7 @@ return [
     'static-page' => 'https://github.com/getmim/static-page.git',
     'admin-static-page' => 'https://github.com/getmim/admin-static-page.git',
     'cli-app-model' => 'https://github.com/getmim/cli-app-model.git',
-    'cli-app' => 'https://github.com/getmim/cli-app.git'
+    'cli-app' => 'https://github.com/getmim/cli-app.git',
+    'admin-user' => 'https://github.com/getmim/admin-user.git',
+    'admin-user-perm' => 'https://github.com/getmim/admin-user-perm.git'
 ];
