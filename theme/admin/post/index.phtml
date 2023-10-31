@@ -1,0 +1,215 @@
+<?php
+    $setable_price = module_exists('admin-post-pricing') && $this->can_i->set_content_pricing;
+?>
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+    <div class="navbar-multiline mr-auto">
+        <span class="navbar-brand" href="#0">Post Editor</span>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Post</li>
+            </ol>
+        </nav>
+    </div>
+    <a href="<?= $this->router->to('adminPostEdit', ['id'=>0]) ?>" class="btn btn-primary">Create New</a>
+</nav>
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <form method="GET" class="card-body">
+                    <h5 class="card-title">Search</h5>
+                    <?= $form->field('q') ?>
+                    <?= $form->field('status') ?>
+                    <div class="text-right">
+                        <button class="btn btn-primary">Find</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div>Total item: <?= number_format($total); ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <?php if($posts): ?>
+                <?php $csrf = $form->csrfToken(); ?>
+                <ul class="list-group list-group-flush card mb-3">
+                    <?php foreach($posts as $post): ?>
+                        <?php
+                            $plagiarism = false;
+                            if (isset($post->plagiarism) && $post->plagiarism->value)
+                                $plagiarism = $post->plagiarism;
+                        ?>
+                        <li class="list-group-item<?= ($plagiarism?' plagiarism':'') ?>">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <?= $post->title->safe ?>
+                                </h5>
+                                <div>
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Action">
+                                        <a href="<?= $this->router->to('adminPostEdit', ['id'=>$post->id]) ?>" class="btn btn-secondary" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <?php if($post->status->value == 3 && isset($post->page)): ?>
+                                            <a href="<?= $post->page ?>" class="btn btn-secondary" title="View Page" target="_blank">
+                                                <i class="fas fa-external-link-square-alt"></i>
+                                            </a>
+                                        <?php endif; ?>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <button id="post-action-<?= $post->id ?>" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="post-action-<?= $post->id ?>">
+                                                <?php if($setable_price): ?>
+                                                    <?php
+                                                        $price = $post->pricing ?? (object)[
+                                                            'id' => 0,
+                                                            'price' => 0,
+                                                            'month' => new DateTime('NOW')
+                                                        ];
+                                                        $data = [
+                                                            'id'    => $price->id,
+                                                            'object'=> $post->id,
+                                                            'price' => $price->price,
+                                                            'month' => $price->month->format('Y-m'),
+                                                            'type'  => 'post'
+                                                        ];
+                                                    ?>
+                                                    <a
+                                                        data-object="<?= hs(json_encode($data)) ?>"
+                                                        class="dropdown-item"
+                                                        data-target="#pricing-set"
+                                                        data-toggle="modal"
+                                                        href="#0">
+                                                        Set Pricing
+                                                    </a>
+                                                <?php endif; ?>
+                                                <a class="dropdown-item"
+                                                    data-toggle="confirm"
+                                                    data-text="Are you sure want to remove this item?"
+                                                    data-btn-type="danger"
+                                                    href="<?= $this->router->to('adminPostRemove', ['id'=>$post->id], ['noob'=>$csrf]) ?>">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <small>
+                                <span title="Created">
+                                    <i class="far fa-calendar-plus"></i>
+                                    <?= $post->created->format('M d, Y H:i') ?>
+                                </span>
+                                &middot;
+                                <span title="Creator">
+                                    <i class="fas fa-user"></i>
+                                    <?= $post->user->fullname->safe ?>
+                                </span>
+                                &middot;
+                                <span title="Words">
+                                    <i class="fas fa-tasks"></i>
+                                    <?= $post->words->format() ?>
+                                </span>
+
+                                <?php if($post->status->value == 1): ?>
+                                    &middot;
+                                    <span title="Status" class="text-warning">
+                                        Draft
+                                    </span>
+                                <?php endif; ?>
+                                <?php if($post->status->value == 2): ?>
+                                    &middot;
+                                    <span title="Status" class="text-primary">
+                                        Editor
+                                    </span>
+                                <?php endif; ?>
+                            </small>
+                            <?php if($plagiarism): ?>
+                                <br>
+                                <small>
+                                    <i class="fas fa-copyright"></i>
+                                    <?= $plagiarism->safe ?>
+                                </small>
+                            <?php endif; ?>
+
+                            <?php if(isset($post->pricing)): ?>
+                                <br>
+                                <small title="Price" class="text-info">
+                                    IDR
+                                    <?= $post->pricing->price->format() ?>
+                                </small>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+
+            <?php if($pages): ?>
+                <?= $this->partial('shared/pagination', ['pages'=>$pages, 'align'=>'right']); ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<?php if($setable_price): ?>
+<form method="POST" class="modal fade" tabindex="-1" role="dialog" id="pricing-set">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Set Content Pricing</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="hidden">
+                    <?= $f_pricing->field('type') ?>
+                    <?= $f_pricing->field('object') ?>
+                    <?= $f_pricing->csrfField('noob') ?>
+                    <input type="hidden" name="reff" value="<?= hs($this->req->url) ?>">
+                </div>
+                <?= $f_pricing->field('price') ?>
+                <?= $f_pricing->field('month') ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        $('#pricing-set').on('show.bs.modal', function(e){
+            var target = $(e.relatedTarget);
+            var data   = target.data('object');
+            $('#admin-content-pricing-edit-fld-month').val( data.month );
+            $('#admin-content-pricing-edit-fld-price').val( data.price );
+            $('#admin-content-pricing-edit-fld-object').val( data.object );
+            $('#admin-content-pricing-edit-fld-type').val( data.type );
+
+            var target = '<?= $this->router->to('adminContentPricingEdit', ['id'=>'-ID-']) ?>'.replace('-ID-', data.id);
+            $('#pricing-set').attr('action', target);
+        });
+    }, false);
+</script>
+<?php endif; ?>
+
+<style>
+.plagiarism {
+    overflow: hidden;
+}
+.plagiarism:before {
+    transform: rotate(-45deg);
+    content: 'plagiarism';
+    position: absolute;
+    color: white;
+    padding: 0 5px;
+    background-color: red;
+    font-size: 10px;
+    text-align: center;
+    width: 100px;
+    left: -20px;
+    top: 22px;
+}
+</style>

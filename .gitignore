@@ -1,3 +1,7 @@
+# cli
+etc/bash/au.sh
+mim
+
 # core
 etc/cache/*
 !etc/cache/.gitkeep
@@ -13,3 +17,11 @@ etc/log/error/*
 etc/temp/*
 !etc/temp/.gitkeep
 vendor
+
+# lib-cache
+etc/cache/lib-cache/*
+!etc/cache/lib-cache/.gitkeep
+
+# lib-upload
+media/*
+!media/.gitkeep
