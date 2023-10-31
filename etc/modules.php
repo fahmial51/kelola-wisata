@@ -36,7 +36,6 @@ return [
     'lib-robot' => 'https://github.com/getmim/lib-robot.git',
     'api-post' => 'https://github.com/getmim/api-post.git',
     'lib-app' => 'https://github.com/getmim/lib-app.git',
-    'admin-post-category' => 'https://github.com/getmim/admin-post-category.git',
     'post-category' => 'https://github.com/getmim/post-category.git',
     'post-category-logo' => 'https://github.com/getmim/post-category-logo.git',
     'api-post-category' => 'https://github.com/getmim/api-post-category.git',
