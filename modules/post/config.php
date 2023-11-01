@@ -143,6 +143,32 @@ return [
                     'type' => 'date'
                 ]
             ],
+            'post-meta' => [
+                'id' => [
+                    'type' => 'number'
+                ],
+                'post' => [
+                    'type' => 'object',
+                    'model' => [
+                        'name'  => 'Post\\Model\\Post',
+                        'field' => 'id',
+                        'type'  => 'number'
+                    ],
+                    'format' => 'post'
+                ],
+                'name' => [
+                    'type' => 'text'
+                ],
+                'value' => [
+                    'type' => 'text'
+                ],
+                'updated' => [
+                    'type' => 'date'
+                ],
+                'created' => [
+                    'type' => 'date'
+                ]
+            ],
             'content-pricing' => [
                 'object' => [
                     'cases' => [

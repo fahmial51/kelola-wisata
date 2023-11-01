@@ -3,15 +3,15 @@
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
     <div class="navbar-multiline mr-auto">
-        <span class="navbar-brand" href="#0">Post Editor</span>
+        <span class="navbar-brand" href="#0"><?= $type_text ?> Editor</span>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Post</li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $type_text ?> </li>
             </ol>
         </nav>
     </div>
-    <a href="<?= $this->router->to('adminPostEdit', ['id'=>0]) ?>" class="btn btn-primary">Create New</a>
+    <a href="<?= $this->router->to('adminPostEdit', ['type' => $this->req->param->type, 'id'=>0]) ?>" class="btn btn-primary">Create New</a>
 </nav>
 
 <div class="container p-3">
@@ -50,7 +50,7 @@
                                 </h5>
                                 <div>
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Action">
-                                        <a href="<?= $this->router->to('adminPostEdit', ['id'=>$post->id]) ?>" class="btn btn-secondary" title="Edit">
+                                        <a href="<?= $this->router->to('adminPostEdit', ['type'=>$this->req->param->type, 'id'=>$post->id]) ?>" class="btn btn-secondary" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <?php if($post->status->value == 3 && isset($post->page)): ?>

@@ -23,7 +23,7 @@ class PostController extends \Admin\Controller
         return [
             '_meta' => [
                 'title' => $title,
-                'menus' => ['post', 'all-post']
+                'menus' => ['post', 'all-destination']
             ],
             'subtitle' => $title,
             'pages' => null
@@ -36,9 +36,28 @@ class PostController extends \Admin\Controller
         if(!$this->can_i->manage_post && !$this->can_i->manage_post_all)
             return $this->show404();
 
+        switch($this->req->param->type) {
+            case 'destination':
+                $type = 1;
+                $type_text = 'Destination';
+                break;
+            case 'article':
+                $type = 2;
+                $type_text = 'Article & Event';
+                break;
+            case 'hotel':
+                $type = 3;
+                $type_text = 'Hotel';
+                break;
+            default:
+                $type = 1;
+                $type_text = 'Destination';
+                break;
+        }
         $post = (object)[
             'content' => '',
-            'status'  => 1
+            'status'  => 1,
+            'type'  => $type
         ];
 
         $id = $this->req->param->id;
@@ -48,19 +67,21 @@ class PostController extends \Admin\Controller
             ];
             if(!$this->can_i->manage_post_all)
                 $cond['user'] = $this->user->id;
-            $post = Post::getOne(['id'=>$id]);
+            $post = Post::getOne(['id'=>$id, 'type' => $type]);
             if(!$post)
                 return $this->show404();
-            $params = $this->getParams('Edit Post');
+            $params = $this->getParams("Edit $type_text");
 
             $content = PContent::getOne(['post'=>$id]);
             $post->content = $content ? $content->text : '';
         }else{
-            $params = $this->getParams('Create New Post');
+            $params = $this->getParams("Create New $type_text");
         }
 
         $form              = new Form('admin.post.edit');
         $params['form']    = $form;
+        $params['type'] = $type;
+        $params['type_text'] = $type_text;
 
         $params['statuses'] = [
             1 => 'Draft',
@@ -148,7 +169,7 @@ class PostController extends \Admin\Controller
             'changes'  => $valid
         ]);
 
-        $next = $this->router->to('adminPost');
+        $next = $this->router->to('adminPost', ['type' => $this->req->param->type]);
         $this->res->redirect($next);
     }
 
@@ -158,7 +179,26 @@ class PostController extends \Admin\Controller
         if(!$this->can_i->manage_post && !$this->can_i->manage_post_all)
             return $this->show404();
 
-        $cond = $pcond = [];
+        switch($this->req->param->type) {
+            case 'destination':
+                $type = 1;
+                $type_text = 'Destination';
+                break;
+            case 'article':
+                $type = 2;
+                $type_text = 'Article & Event';
+                break;
+            case 'hotel':
+                $type = 3;
+                $type_text = 'Hotel';
+                break;
+            default:
+                $type = 1;
+                $type_text = 'Destination';
+                break;
+        }
+
+        $cond = $pcond = ['type' => $type];
         if($q = $this->req->getQuery('q'))
             $pcond['q'] = $cond['q'] = $q;
 
@@ -209,9 +249,11 @@ class PostController extends \Admin\Controller
             }
         }
 
-        $params          = $this->getParams('Post');
+        $params          = $this->getParams($type_text);
         $params['posts'] = $posts;
         $params['form']  = new Form('admin.post.index');
+        $params['type'] = $type;
+        $params['type_text'] = $type_text;
 
         if (module_exists('admin-post-pricing') && $this->can_i->set_content_pricing) {
             $params['f_pricing'] = new Form('admin.content-pricing.edit');
@@ -223,7 +265,7 @@ class PostController extends \Admin\Controller
         $params['total'] = $total = Post::count($cond);
         if($total > $rpp){
             $params['pages'] = new Paginator(
-                $this->router->to('adminPost'),
+                $this->router->to('adminPost', ['type' => $type]),
                 $total,
                 $page,
                 $rpp,

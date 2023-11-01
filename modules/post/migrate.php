@@ -37,6 +37,16 @@ return [
                 ],
                 'index' => 4000
             ],
+            'type' => [
+                'comment' => '1 Destination, 2 Event & Article, 3 Hotel',
+                'type' => 'TINYINT',
+                'attrs' => [
+                    'unsigned' => true,
+                    'null' => false,
+                    'default' => 1
+                ],
+                'index' => 4000
+            ],
             'title' => [
                 'type' => 'VARCHAR',
                 'length' => 150,
@@ -141,6 +151,53 @@ return [
                 'index' => 2000
             ],
             'text' => [
+                'type' => 'TEXT',
+                'attrs' => [],
+                'index' => 3000
+            ],
+            'updated' => [
+                'type' => 'TIMESTAMP',
+                'attrs' => [
+                    'default' => 'CURRENT_TIMESTAMP',
+                    'update' => 'CURRENT_TIMESTAMP'
+                ],
+                'index' => 10000
+            ],
+            'created' => [
+                'type' => 'TIMESTAMP',
+                'attrs' => [
+                    'default' => 'CURRENT_TIMESTAMP'
+                ],
+                'index' => 11000
+            ]
+        ]
+    ],
+    'Post\\Model\\PostMeta' => [
+        'fields' => [
+            'id' => [
+                'type' => 'INT',
+                'attrs' => [
+                    'unsigned' => TRUE,
+                    'primary_key' => TRUE,
+                    'auto_increment' => TRUE
+                ],
+                'index' => 1000
+            ],
+            'post' => [
+                'type' => 'INT',
+                'attrs' => [
+                    'unsigned' => TRUE,
+                    'null' => FALSE
+                ],
+                'index' => 2000
+            ],
+            'name' => [
+                'type' => 'VARCHAR',
+                'length' => 200,
+                'attrs' => [],
+                'index' => 3000
+            ],
+            'value' => [
                 'type' => 'TEXT',
                 'attrs' => [],
                 'index' => 3000

@@ -57,15 +57,19 @@ return [
         'admin' => [
             'adminPost' => [
                 'path' => [
-                    'value' => '/post'
+                    'value' => '/post/(:type)',
+                    'params' => [
+                        'type' => 'slug'
+                    ]
                 ],
                 'method' => 'GET',
                 'handler' => 'AdminPost\\Controller\\Post::index'
             ],
             'adminPostEdit' => [
                 'path' => [
-                    'value' => '/post/(:id)',
+                    'value' => '/post/(:type)/(:id)',
                     'params' => [
+                        'type' => 'slug',
                         'id' => 'number'
                     ]
                 ],
@@ -92,10 +96,22 @@ return [
                     'icon' => '<i class="fas fa-newspaper"></i>',
                     'priority' => 0,
                     'children' => [
-                        'all-post' => [
-                            'label' => 'All Post',
+                        'all-destination' => [
+                            'label' => 'All Destination',
                             'icon'  => '<i></i>',
-                            'route' => ['adminPost'],
+                            'route' => ['adminPost', ['type' =>'destination']],
+                            'perms' => 'manage_post'
+                        ],
+                        'all-article' => [
+                            'label' => 'All Article & Event',
+                            'icon'  => '<i></i>',
+                            'route' => ['adminPost', ['type' =>'article']],
+                            'perms' => 'manage_post'
+                        ],
+                        'all-hotel' => [
+                            'label' => 'All Hotel',
+                            'icon'  => '<i></i>',
+                            'route' => ['adminPost', ['type' => 'hotel']],
                             'perms' => 'manage_post'
                         ]
                     ]
@@ -134,6 +150,13 @@ return [
                 'status' => [
                     'label' => 'Status',
                     'type' => 'select',
+                    'rules' => [
+                        'required' => true 
+                    ]
+                ],
+                'type' => [
+                    'label' => 'Type',
+                    'type' => 'text',
                     'rules' => [
                         'required' => true 
                     ]
