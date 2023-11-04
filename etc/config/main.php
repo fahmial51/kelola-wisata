@@ -31,5 +31,8 @@ return [
             'local' => 'media',
             'host' => 'http://admin-wisata.test/media/'
         ]
+    ],
+    'libCurl' => [
+        'log' => TRUE
     ]
 ];

@@ -45,5 +45,9 @@ return [
     'cli-app-model' => 'https://github.com/getmim/cli-app-model.git',
     'cli-app' => 'https://github.com/getmim/cli-app.git',
     'admin-user' => 'https://github.com/getmim/admin-user.git',
-    'admin-user-perm' => 'https://github.com/getmim/admin-user-perm.git'
+    'admin-user-perm' => 'https://github.com/getmim/admin-user-perm.git',
+    'site-post' => 'https://github.com/getmim/site-post.git',
+    'lib-event' => 'https://github.com/getmim/lib-event.git',
+    'lib-worker' => 'https://github.com/getmim/lib-worker.git',
+    'lib-curl' => 'https://github.com/getmim/lib-curl.git'
 ];

@@ -92,7 +92,7 @@ return [
         'sidebarMenu' => [
             'items' => [
                 'post' => [
-                    'label' => 'Post',
+                    'label' => 'Publication',
                     'icon' => '<i class="fas fa-newspaper"></i>',
                     'priority' => 0,
                     'children' => [
@@ -112,6 +112,12 @@ return [
                             'label' => 'All Hotel',
                             'icon'  => '<i></i>',
                             'route' => ['adminPost', ['type' => 'hotel']],
+                            'perms' => 'manage_post'
+                        ],
+                        'all-tour-guide' => [
+                            'label' => 'All Tour Guide',
+                            'icon'  => '<i></i>',
+                            'route' => ['adminPost', ['type' => 'tour-guide']],
                             'perms' => 'manage_post'
                         ]
                     ]

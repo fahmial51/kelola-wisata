@@ -22,6 +22,13 @@ vendor
 etc/cache/lib-cache/*
 !etc/cache/lib-cache/.gitkeep
 
+# lib-curl
+etc/log/lib-curl/*
+!etc/log/lib-curl/.gitkeep
+
 # lib-upload
 media/*
 !media/.gitkeep
+
+# lib-worker
+etc/.worker
