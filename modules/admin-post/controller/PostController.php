@@ -98,6 +98,7 @@ class PostController extends \Admin\Controller
         $c_opts = [
             'cover'      => [null,                  null, 'json'],
             'meta'       => [null,                  null, 'json'],
+            'info'       => [null,                  null, 'json'],
             'category'   => ['admin-post-category', null, 'format', 'all', 'name', 'parent'],
             'gallery'    => ['admin-post-gallery',  null, 'format', 'active', 'title'],
             'website'    => ['admin-post-website',  null, 'format', 'all', 'name']

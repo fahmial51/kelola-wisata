@@ -128,7 +128,7 @@ return [
     'libForm' => [
         'forms' => [
             'admin.post.edit' => [
-                '@extends' => ['std-site-meta','std-cover'],
+                '@extends' => ['std-site-meta','std-cover', 'std-info'],
                 'title' => [
                     'label' => 'Title',
                     'type' => 'text',
@@ -207,6 +207,48 @@ return [
                         'TechArticle'   => 'TechArticle'
                     ]
                 ]
+            ],
+            'std-info' => [
+                'info-name' => [
+                    'label' => 'Name',
+                    'type' => 'text',
+                    'rules' => []
+                ],
+                'info-address' => [
+                    'label' => 'Address',
+                    'type' => 'textarea',
+                    'rules' => []
+                ],
+                'info-buy_at' => [
+                    'label' => 'Buy at',
+                    'type' => 'text',
+                    'rules' => []
+                ],
+                'info-price' => [
+                    'label' => 'Price Start From',
+                    'type' => 'number',
+                    'rules' => []
+                ],
+                'info-url' => [
+                    'label' => 'URL',
+                    'type' => 'url',
+                    'rules' => []
+                ],
+                'info-gmaps' => [
+                    'label' => 'Tour Google Maps Link',
+                    'type' => 'url',
+                    'rules' => []
+                ],
+                'info-phone' => [
+                    'label' => 'Phone',
+                    'type' => 'tel',
+                    'rules' => []
+                ],
+                'info-instagram' => [
+                    'label' => 'Tour Instagram Link',
+                    'type' => 'url',
+                    'rules' => []
+                ],
             ],
             'admin.post.index' => [
                 'q' => [

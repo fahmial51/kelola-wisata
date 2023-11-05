@@ -107,6 +107,11 @@ return [
                 'attrs' => [],
                 'index' => 13000
             ],
+            'info' => [
+                'type' => 'TEXT',
+                'attrs' => [],
+                'index' => 13000
+            ],
             'published' => [
                 'type' => 'DATETIME',
                 'attrs' => [

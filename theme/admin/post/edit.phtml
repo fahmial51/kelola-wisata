@@ -63,6 +63,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="card mt-3">
+                    <div class="card-header">Detail Information</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?= $form->field('info-address'); ?>
+                            </div>
+                            <div class="col-md-12">
+                                <?= $form->field('info-price', null, ($type == 4 ? 'Price per Person':'')); ?>
+                            </div>
+                            <?php if(in_array($type, [3,4])):?>
+                            <div class="col-md-12">
+                                <?= $form->field('info-url'); ?>
+                            </div>
+                            <div class="col-md-12">
+                                <?= $form->field('info-phone'); ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-3">
                 <div class="card">

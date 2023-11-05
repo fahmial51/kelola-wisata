@@ -118,7 +118,7 @@ class Form
         return $this->csrf;
     }
 
-    public function field(string $name, $options=null): string{
+    public function field(string $name, $options=null, $label=''): string{
         if(!isset($this->rules->$name))
             trigger_error('Field `' . $name . '` under form `' . $this->form . '` is not exists');
 
@@ -127,6 +127,7 @@ class Form
             $value = $this->object->$name ?? null;
 
         $field_params = $this->rules->$name;
+        if ($label !== '') $field_params->label = $label;
         
         $field_id = $this->getName() . '-fld-' . $name;
         $field_id = preg_replace('![^a-zA-Z0-9-]!', '-', $field_id);

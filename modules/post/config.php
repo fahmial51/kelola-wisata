@@ -89,6 +89,9 @@ return [
                 'meta' => [
                     'type' => 'json'
                 ],
+                'info' => [
+                    'type' => 'json'
+                ],
                 'words' => [
                     'type' => 'number'
                 ],
