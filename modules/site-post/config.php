@@ -54,6 +54,16 @@ return [
     ],
     'routes' => [
         'site' => [
+            'sitePostList' => [
+                'path' => [
+                    'value' => '/post/(:type)',
+                    'params' => [
+                        'type' => 'slug'
+                    ]
+                ],
+                'method' => 'GET',
+                'handler' => 'SitePost\\Controller\\Post::list'
+            ],
             'sitePostSingle' => [
                 'path' => [
                     'value' => '/post/read/(:slug)',

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?= $this->partial('shared/head', ['_meta'=>$_meta]) ?>
+</head>
+<body class="theme-light">
+    <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+    <div class="page">
+        <?= $this->partial('shared/header') ?>
+        <?= $content ?>
+        <?= $this->partial('shared/footer') ?>
+    </div>
+    
+    <?= $this->partial('shared/foot', ['_meta'=>$_meta]) ?>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?php
+    $title = $this->config->name;
+    if(isset($_meta['title']))
+        $title = $_meta['title'] . ' - ' . $title;
+?>
+
+<div class="header header-fixed header-logo-center header-auto-show">
+        <a href="#" class="header-title"><?= $_meta['title'] ?></a>
+        <a href="/" class="header-icon header-icon-1"><i class="fas fa-home"></i></a>
+        <!-- <a href="#" data-menu="menu-main" class="header-icon header-icon-4"><i class="fas fa-bars"></i></a> -->
+        <!-- <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-dark"><i class="fas fa-sun"></i></a> -->
+        <!-- <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-light"><i class="fas fa-moon"></i></a> -->
+    </div>
+    
+<div class="page-title page-title-fixed">
+    <a href="/" class="icon icon-s bg-theme rounded-xl float-start me-3"><i class="fa color-theme fa-arrow-left"></i></a>
+    <h1><?= $title ?></h1>
+</div>
+<div class="page-title-clear"></div>
+
+<div class="page-content">
+        <div class="content mt-0 mb-0">
+            <?php if(empty($posts)): ?>
+                <p class=" card rounded p-2 text-center">There is no post yet </>
+            <?php else: ?>
+            <?php foreach($posts as $post): ?>
+            <div class="card card-style ms-3" style="background-image:url(images/travel/1m.jpg);" data-card-height="300">
+                <div class="card-top px-3 py-3">
+                    <a href="#" data-menu="menu-heart" class="bg-white rounded-sm icon icon-xs float-end"><i class="fa fa-heart color-red-dark"></i></a>
+                </div>
+                <div class="card-bottom px-3 py-3">
+                    <h1 class="color-white float-start"><?= $post->title->safe ?></h1>
+                    <a href="<?= $this->router->to('sitePostSingle', ['slug' => $post->slug ])?>" class="bg-white color-black rounded-sm btn btn-m float-end font-700 font-12">Explore</a>
+                </div>
+                <div class="card-overlay bg-gradient opacity-30"></div>
+                <div class="card-overlay bg-gradient"></div>
+            </div>
+            <?php endforeach;?>
+            <?php endif;?>
+            
+        </div>
+
+    </div>
+    <!-- Page content ends here-->

@@ -48,6 +48,7 @@ class PostController extends \Admin\Controller
             case 'hotel':
                 $type = 3;
                 $type_text = 'Hotel';
+                break;
             case 'tour-guide':
                 $type = 4;
                 $type_text = 'Tour Guide';

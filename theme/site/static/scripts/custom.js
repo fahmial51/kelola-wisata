@@ -659,9 +659,9 @@ document.addEventListener('DOMContentLoaded', () => {
         var footerBar6 = document.querySelectorAll('.footer-bar-6')[0];
         if(footerBar6){
             var footerBar6_select = document.querySelectorAll('.footer-bar-6 .active-nav')[0];
-            var footerBar6_circle = document.querySelectorAll('.footer-bar-6 .circle-nav')[0];
-            footerBar6_select.insertAdjacentHTML('beforeend', '<em></em>');
-            footerBar6_circle.insertAdjacentHTML('beforeend', '<strong><u></u></strong>');
+            // var footerBar6_circle = document.querySelectorAll('.footer-bar-6 .circle-nav')[0];
+            if(footerBar6_select) footerBar6_select.insertAdjacentHTML('beforeend', '<em></em>');
+            // footerBar6_circle.insertAdjacentHTML('beforeend', '<strong><u></u></strong>');
         }
 
         //Detect Ad Block
@@ -1602,21 +1602,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
 
     //End of Init Template
-    if(isAJAX === true){
-        if(window.location.protocol !== "file:"){
-            const options = {
-                containers: ["#page"],
-                cache:false,
-                animateHistoryBrowsing: false,
-                plugins: [
-                    new SwupPreloadPlugin()
-                ],
-                linkSelector:'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])'
-            };
-            const swup = new Swup(options);
-            document.addEventListener('swup:pageView',(e) => { init_template(); })
-        }
-    }
+    // if(isAJAX === true){
+    //     if(window.location.protocol !== "file:"){
+    //         const options = {
+    //             containers: ["#page"],
+    //             cache:false,
+    //             animateHistoryBrowsing: false,
+    //             plugins: [
+    //                 new SwupPreloadPlugin()
+    //             ],
+    //             linkSelector:'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])'
+    //         };
+    //         const swup = new Swup(options);
+    //         document.addEventListener('swup:pageView',(e) => { init_template(); })
+    //     }
+    // }
 
     init_template();
 });

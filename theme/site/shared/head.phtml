@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<?php
+    $title = $this->config->name;
+    if(isset($_meta['title']))
+        $title = $_meta['title'] . ' - ' . $title;
+?>
+<title><?= $title ?></title>
+<!-- 
+<?php $csses = \AdminUi\Library\Assets::getAssets('css', 'head'); ?>
+<?php foreach($csses as $file => $version): ?>
+    <link rel="stylesheet" href="<?= $file ?>?v=<?= $version ?>">
+<?php endforeach; ?>
+
+<?php $jses = \AdminUi\Library\Assets::getAssets('js', 'head'); ?>
+<?php foreach($jses as $file => $version): ?>
+    <script src="<?= $file ?>?v=<?= $version ?>"></script>
+<?php endforeach; ?> -->
+
+<script>window.AConf = <?= \AdminUi\Library\AConf::json() ?></script>
+
+<link rel="stylesheet" type="text/css" href="<?= $this->asset('styles/bootstrap.css');?>">
+<link rel="stylesheet" type="text/css" href="<?= $this->asset('styles/style.css');?>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<?= $this->asset('fonts/css/fontawesome-all.min.css');?>">
+<link rel="manifest" href="<?= $this->asset('_manifest.json');?>" data-pwa-version="set_in_manifest_and_pwa_js">
+<link rel="apple-touch-icon" sizes="180x180" href="<?= $this->asset('app/icons/icon-192x192.png');?>">

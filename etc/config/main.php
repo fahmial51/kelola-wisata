@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Admin Wisata',
+    'name' => 'Kelola Wisata',
     'version' => '0.0.1',
     'host' => 'admin-wisata.test',
     'timezone' => 'Asia/Jakarta',

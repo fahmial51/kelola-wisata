@@ -7,6 +7,8 @@
 
 namespace Site;
 
+use LibView\Library\View;
+
 class Controller extends \Mim\Controller
     implements \Mim\Iface\GateController
 {
@@ -40,5 +42,27 @@ class Controller extends \Mim\Controller
 
     public function show500Action(): void{
         $this->show500(\Mim\Library\Logger::$last_error);
+    }
+
+    public function resp(string $view, array $params=[], string $layout='default'){
+        if(!isset($params['_meta']))
+            $params['_meta'] = [];
+        if(!isset($params['_meta']['title']))
+            $params['_meta']['title'] = $this->config->name;
+
+        $thumb_icon = $this->router->asset('admin', 'icon/file.png', 1);
+
+        
+        // render the content
+        $content = View::render($view, $params, 'site') ?? '';
+
+        $layout_params = [
+            '_meta'   => $params['_meta'],
+            'content' => $content
+        ];
+        $result  = View::render('layout/' . $layout, $layout_params) ?? '';
+
+        $this->res->addContent($result);
+        $this->res->send();
     }
 }

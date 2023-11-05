@@ -1,31 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <?= $this->meta->head($meta['head']) ?>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+<div class="page-content">
+
+        <div class="card rounded-0" style="background-image: url(<?= $post->cover->url ?>);" data-card-height="450">
+            <div class="card-top mt-3 pb-5 ps-3">
+                <a href="#" data-back-button class="icon icon-s bg-theme rounded-xl float-start me-3"><i class="fa color-theme fa-arrow-left"></i></a>
+                <a href="#" data-menu="menu-share"  class="icon icon-s bg-theme rounded-xl float-end me-3"><i class="fa color-theme fa-share-alt"></i></a>
+            </div>
+            <div class="card-overlay bg-gradient"></div>
+        </div>
+        
+        <!-- margin top and margin bottom negative values repesent how much you want the article to go over the above and below image-->
+        <div class="card card-style" style="margin-top:-100px;z-index:1">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600"><?= implode(', ', $post->category)?></p>
+                <h1>
+                    <?= $post->title->safe ?>
+                </h1>
                 
-                <div class="pt-4"></div>
-                <h1><?= $post->title->safe ?></h1>
-                <div>
-                    <?= $post->created->format('M d, Y H:i') ?> 
-                    &middot;
-                    <?= $post->user->fullname ?>
+                <?= $post->content ?>
+                
+
+                <div class="divider"></div>
+                
+                <div class="d-flex">
+                    <div class="me-2">
+                        <img src="<?= $post->user->avatar ?>" width="40" class="rounded-s">
+                    </div>
+                    <div>
+                        <h5><?= $post->user->fullname ?></h5>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" data-menu="menu-share" class="icon icon-s bg-theme shadow-xl rounded-xl float-end"><i class="fa color-theme fa-share-alt"></i></a>
+                    </div>
                 </div>
-                <hr>
-                <div><?= $post->content->text ?></div>
-                
             </div>
         </div>
+        
+        
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <?= $this->meta->foot($meta['foot']) ?>
-</body>
-</html>
+    <!-- Page content ends here-->
