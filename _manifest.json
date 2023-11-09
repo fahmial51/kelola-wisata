@@ -5,7 +5,7 @@
 "name" : "Kelola Wisata",
 "scope" : "https://kelola-wisata.bisabanget.my.id/",
 "display" : "fullscreen",
-"start_url" : "https://kelola-wisata.bisabanget.my.id/index.html",
+"start_url" : "https://kelola-wisata.bisabanget.my.id/",
 "short_name" : "Kelola Wisata",
 "description" : "",
 "orientation" : "portrait",
@@ -14,34 +14,38 @@
 "generated" : "true",
   "icons": [
 	{
-	  "src": "favicon_ico/16x16.png",
+	  "src": "theme/site/static/favicon_io/16x16.png",
 	  "sizes": "16x16",
 	  "type": "image/png",
 	  "purpose": "any maskable"
 	},
 	{
-	  "src": "favicon_ico/32x32.png",
+	  "src": "theme/site/static/favicon_io/32x32.png",
 	  "sizes": "32x32",
 	  "type": "image/png",
 	  "purpose": "any maskable"
 	},
 	{
-	  "src": "favicon_ico/192x192.png",
+	  "src": "theme/site/static/favicon_io/192x192.png",
 	  "sizes": "192x192",
 	  "type": "image/png",
 	  "purpose": "any maskable"
 	},
 	{
-	  "src": "favicon_ico/192x192.png",
+	  "src": "theme/site/static/favicon_io/192x192.png",
 	  "sizes": "144x144",
 	  "type": "image/png",
 	  "purpose": "any maskable"
 	},
 	{
-	  "src": "favicon_ico/512x512.png",
+	  "src": "theme/site/static/favicon_io/512x512.png",
 	  "sizes": "512x512",
 	  "type": "image/png",
 	  "purpose": "any maskable"
+	},
+	{
+	  "src": "theme/site/static/favicon_io/favicon.ico",
+	  "sizes": "any"
 	}
   ]
 }
