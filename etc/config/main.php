@@ -34,5 +34,16 @@ return [
     ],
     'libCurl' => [
         'log' => TRUE
+    ],
+    'libMailer' => [
+        'SMTP' => FALSE,
+        'Host' => 'smtp.gmail.com',
+        'SMTPAuth' => FALSE,
+        'Username' => 'kelola-wisata@bisabanget.my.id',
+        'Password' => '123',
+        'SMTPSecure' => 'tls',
+        'Port' => 587,
+        'FromEmail' => 'kelola-wisata@bisabanget.my.id',
+        'FromName' => 'kelola wisata'
     ]
 ];

@@ -1,0 +1,42 @@
+<?php
+    $title = $this->config->name;
+    if(isset($_meta['title']))
+        $title = $_meta['title'];
+?>
+
+<div class="header header-fixed header-logo-center header-auto-show">
+        <a href="#" class="header-title"><?= $_meta['title'] ?></a>
+    </div>
+    
+<div class="page-title page-title-fixed">
+    <h1><?= $title ?></h1>
+</div>
+<div class="page-title-clear"></div>
+
+<div class="page-content">
+        <div class="content mt-0 mb-0">
+            <?php if(empty($products)): ?>
+                <p class=" card rounded p-2 text-center">There is no product yet </>
+            <?php else: ?>
+                <div class="row mb-0">
+                    <?php foreach($products as $product): ?>
+                        <div class="col-6 pe-2">
+                            <div class="card card-style mx-0">
+                                <img src="<?= $product->cover->url ?? $this->asset('images/food/small/10s.jpg') ?>" class="img-fluid">
+                                <div class="px-2">
+                                    <h2><?= $product->name->safe ?></h2>
+                                    <h5 class="font-14">IDR <?= number_format($product->price->one) ?></h5>
+                                    <p class="font-11 line-height-s">
+                                        <?= $product->meta->description ?? '' ?>
+                                    </p>
+                                    <a href="#" class="btn btn-s btn-full border-highlight rounded-s color-highlight mb-3">Order</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
+                </div>
+            <?php endif;?>
+            
+        </div>  
+    </div>
+    <!-- Page content ends here-->

@@ -9,30 +9,38 @@ namespace SitePost\Controller;
 
 use SitePost\Library\Meta;
 use Post\Model\Post;
+use Contact\Library\Contact;
 use LibFormatter\Library\Formatter;
+use LibForm\Library\Form;
+use LibRecaptcha\Library\Validator;
 
 class PostController extends \Site\Controller
 {
     public function listAction(){
+        if(empty($this->req->param->type)) {
+            $this->req->param->type = 1;
+        }
+
         switch($this->req->param->type) {
             case 'destination':
                 $type = 1;
-                $type_text = 'Destination';
+                $type_text = 'Destinasi';
                 break;
-            case 'article':
+            case 'information':
                 $type = 2;
-                $type_text = 'Article & Event';
+                $type_text = 'Informasi';
                 break;
             case 'hotel':
                 $type = 3;
                 $type_text = 'Hotel';
-            case 'tour-guide':
+                break;
+            case 'activity':
                 $type = 4;
-                $type_text = 'Tour Guide';
+                $type_text = 'Aktivitas';
                 break;
             default:
                 $type = 1;
-                $type_text = 'Destination';
+                $type_text = 'Destinasi';
                 break;
         }
 
@@ -58,6 +66,9 @@ class PostController extends \Site\Controller
             ]
         ];
 
+        if($type==4) {
+            return $this->resp('post/activity-list', $params);
+        }
         return $this->resp('post/list', $params);
     }
 
@@ -74,6 +85,35 @@ class PostController extends \Site\Controller
             'meta' => Meta::single($post)
         ];
 
+        if($post->type == 4) {
+            $form = new Form('site-contact');
+
+            $params = [
+                'post' => $post,
+                'meta'    => Meta::single($post),
+                'form'    => $form,
+                'error'   => null,
+                'success' => null
+            ];
+            if(!is_null($fields = $form->validate())){
+                if(module_exists('lib-recaptcha')){
+                    $token = $this->req->getPost('secure');
+                    if(is_null(Validator::validate($token))){
+                        $params['error'] = 'Invalid Credentials';
+                        $this->res->render('contact/single', $params);
+                        return $this->res->send();
+                    }
+                }
+
+                if(!Contact::add((array)$fields)){
+                    $params['error'] = Contact::$last_error;
+                    return $this->resp('post/tour-guide', $params);
+                }
+
+                $params['success'] = true;
+            }
+            return $this->resp('post/tour-guide', $params);
+        }
         return $this->resp('post/single', $params);
     }
 }

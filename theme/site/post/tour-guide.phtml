@@ -1,0 +1,114 @@
+<div class="page-content">
+
+        <div class="card rounded-0" style="background-image: url(<?= $post->cover->url ?>);" data-card-height="450">
+            <div class="card-top mt-3 pb-5 ps-3">
+                <a href="#" data-back-button class="icon icon-s bg-theme rounded-xl float-start me-3"><i class="fa color-theme fa-arrow-left"></i></a>
+            </div>
+            <div class="card-overlay bg-gradient"></div>
+        </div>
+        
+        <!-- margin top and margin bottom negative values repesent how much you want the article to go over the above and below image-->
+        <div class="card card-style" style="margin-top:-100px;z-index:1">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600"><?= implode(', ', $post->category)?></p>
+                <h1>
+                    <?= $post->title->safe ?>
+                </h1>
+                
+                <?= $post->content ?>
+                
+
+                <div class="divider"></div>
+                
+                <div class="d-flex">
+                    <div>
+                        <h5>Price per person</h5>
+                        <p> IDR <?= number_format($post->info->price) ?? '-' ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card card-style">
+			<div class="content">
+				<h4>Give us a Call</h4>
+				<p>
+					If it's easier for you, tap the button below to call us now and we'll set all the details via a short call.
+				</p>
+				<a href="tel:<?=$post->info->phone?>" class="default-link btn btn-m rounded-sm font-700 text-uppercase btn-full gradient-green border-0">Call Now</a>
+			</div>
+		</div>
+        
+		<div class="card card-style">
+			<div class="content">
+				<h4>Make Reservation</h4>
+                <?php if($error): ?>
+					<div role="alert" class="mb-5 alert alert-small rounded-s  bg-red-dark">
+						<span><i class="fa fa-check color-white"></i></span>
+						<strong class="color-white"><strong>Whoops</strong> <?= $error ?></strong>
+					</div>
+                <?php elseif($success): ?>
+					<div role="alert" class="mb-5 alert alert-small rounded-s  bg-green-dark">
+						<span><i class="fa fa-check color-white"></i></span>
+						<strong class="color-white">Thankyou, we'll get in touch with you in no time.</strong>
+					</div>
+                <?php else: ?>
+                    <p>Please provide your basic information, and tell us more about your activity.</p>
+                <?php endif; ?>
+
+				<form method="POST" action="">
+                <input type="hidden" name="type" value="1">
+				<div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
+					<input type="name" name="fullname" class="form-control validate-name" id="form1" placeholder="John Doe" required>
+					<label for="form1" class="color-highlight">Name</label>
+					<i class="fa fa-times disabled invalid color-red-dark"></i>
+					<i class="fa fa-check disabled valid color-green-dark"></i>
+					<em>(required)</em>
+				</div>
+				
+				<div class="input-style input-style-always-active has-borders np-icon validate-field mb-4">
+					<input type="email" name="email" class="form-control validate-email" id="form2" placeholder="johndoe@gmail.com" required>
+					<label for="form2" class="color-highlight">Email</label>
+					<i class="fa fa-times disabled invalid color-red-dark"></i>
+					<i class="fa fa-check disabled valid color-green-dark"></i>
+					<em>(required)</em>
+				</div>
+				
+				<div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
+					<input type="tel" name="phone" class="form-control validate-tel" id="form4" placeholder="+6281234567839" required>
+					<label for="form4" class="color-highlight">Phone</label>
+					<i class="fa fa-times disabled invalid color-red-dark"></i>
+					<i class="fa fa-check disabled valid color-green-dark"></i>
+					<em>(required)</em>
+				</div>
+				
+				<div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
+					<input type="number" name="people_count" min="1" class="form-control validate-number" id="form3" placeholder="1" required>
+					<label for="form3" class="color-highlight">Number Of People</label>
+					<i class="fa fa-times disabled invalid color-red-dark"></i>
+					<i class="fa fa-check disabled valid color-green-dark"></i>
+					<em>(required)</em>
+				</div>
+				
+				<div class="input-style input-style-always-active has-borders no-icon mb-4">
+					<input type="date" name="date" value="2022-12-31" max="2030-01-01" min="2021-01-01" class="form-control validate-text" id="form6" placeholder="Date" required>
+					<label for="form6" class="color-highlight">Date</label>
+					<i class="fa fa-check disabled valid me-4 pe-3 font-12 color-green-dark"></i>
+					<i class="fa fa-check disabled invalid me-4 pe-3 font-12 color-red-dark"></i>
+					<em>(required)</em>
+				</div>
+				
+				<div class="input-style input-style-always-active has-borders no-icon mb-4">
+					<textarea id="form7" name="description" placeholder="I'd Like...."></textarea>
+					<label for="form7" class="color-highlight">Notes</label>
+				</div>
+				
+				
+				<button type="submit" class="btn btn-m rounded-sm font-700 text-uppercase btn-full gradient-highlight border-0 w-100">Submit Reservation</button>
+
+				</form>
+			</div>
+		</div>   
+        
+    </div>
+    <!-- Page content ends here-->

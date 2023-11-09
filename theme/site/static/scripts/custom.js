@@ -659,9 +659,9 @@ document.addEventListener('DOMContentLoaded', () => {
         var footerBar6 = document.querySelectorAll('.footer-bar-6')[0];
         if(footerBar6){
             var footerBar6_select = document.querySelectorAll('.footer-bar-6 .active-nav')[0];
-            // var footerBar6_circle = document.querySelectorAll('.footer-bar-6 .circle-nav')[0];
+            var footerBar6_circle = document.querySelectorAll('.footer-bar-6 .circle-nav')[0];
             if(footerBar6_select) footerBar6_select.insertAdjacentHTML('beforeend', '<em></em>');
-            // footerBar6_circle.insertAdjacentHTML('beforeend', '<strong><u></u></strong>');
+            if(footerBar6_circle) footerBar6_circle.insertAdjacentHTML('beforeend', '<strong><u></u></strong>');
         }
 
         //Detect Ad Block
@@ -1619,5 +1619,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // }
 
     init_template();
+
+    // let installPrompt = null;
+    // const installButton = document.querySelector("#install");
+
+    // window.addEventListener("beforeinstallprompt", (event) => {
+    // event.preventDefault();
+    //     installPrompt = event;
+    //     installButton.removeAttribute("hidden");
+    // });
+
+    // installButton.addEventListener("click", async () => {
+    //     if (!installPrompt) {
+    //       return;
+    //     }
+    //     const result = await installPrompt.prompt();
+    //     console.log(`Install prompt was: ${result.outcome}`);
+    //     disableInAppInstallPrompt();
+    // });
+      
+    // function disableInAppInstallPrompt() {
+    //     installPrompt = null;
+    //     installButton.setAttribute("hidden", "");
+    // }
+
+    // window.addEventListener("appinstalled", () => {
+    //     disableInAppInstallPrompt();
+    // });
+      
+    // function disableInAppInstallPrompt() {
+    //     installPrompt = null;
+    //     installButton.setAttribute("hidden", "");
+    // }
 });
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?= $this->meta->head($meta['head']) ?>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pt-4"></div>
+                <h1>Contact Us</h1>
+
+                <hr>
+
+                <?php if($error): ?>
+                    <div class="alert alert-danger"><strong>Whoops</strong> <?= $error ?></div>
+                <?php elseif($success): ?>
+                    <div class="alert alert-success"><strong>Success</strong> Thankyou, we'll get in touch with you in no time.</div>
+                <?php else: ?>
+                    <p>Please provide your basic information, and the purpose of your contact</p>
+                <?php endif; ?>
+
+                <form method="POST">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?= $form->field('fullname') ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?= $form->field('email') ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <?= $form->field('subject') ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <?= $form->field('content') ?>
+                        </div>
+                    </div>
+
+                    <div class="text-right">
+                        <button class="btn btn-primary">Send</button>
+                    </div>
+
+                    <!-- recaptcha -->
+                    <?php if(module_exists('lib-recaptcha')): ?>
+                        <input type="hidden" name="secure" id="secure">
+                    <?php endif; ?>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <?= $this->meta->foot($meta['foot']) ?>
+
+    <?php if(module_exists('lib-recaptcha')): ?>
+        <?php $sitekey = $this->config->libRecaptcha->sitekey; ?>
+        <script src="https://www.google.com/recaptcha/api.js?render=<?= $sitekey ?>"></script>
+        <script>
+            let opts = {action: 'social'}
+            grecaptcha.ready(() => {
+                grecaptcha
+                .execute('<?= $sitekey ?>', opts)
+                .then(token => document.querySelector('#secure').value = token)
+            });
+        </script>
+
+    <?php endif; ?>
+</body>
+</html>

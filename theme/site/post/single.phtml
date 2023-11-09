@@ -3,7 +3,6 @@
         <div class="card rounded-0" style="background-image: url(<?= $post->cover->url ?>);" data-card-height="450">
             <div class="card-top mt-3 pb-5 ps-3">
                 <a href="#" data-back-button class="icon icon-s bg-theme rounded-xl float-start me-3"><i class="fa color-theme fa-arrow-left"></i></a>
-                <a href="#" data-menu="menu-share"  class="icon icon-s bg-theme rounded-xl float-end me-3"><i class="fa color-theme fa-share-alt"></i></a>
             </div>
             <div class="card-overlay bg-gradient"></div>
         </div>
@@ -17,24 +16,24 @@
                 </h1>
                 
                 <?= $post->content ?>
-                
-
-                <div class="divider"></div>
-                
-                <div class="d-flex">
-                    <div class="me-2">
-                        <img src="<?= $post->user->avatar ?>" width="40" class="rounded-s">
-                    </div>
-                    <div>
-                        <h5><?= $post->user->fullname ?></h5>
-                    </div>
-                    <div class="ms-auto">
-                        <a href="#" data-menu="menu-share" class="icon icon-s bg-theme shadow-xl rounded-xl float-end"><i class="fa color-theme fa-share-alt"></i></a>
-                    </div>
-                </div>
             </div>
         </div>
-        
+
+        <?php if($post->type != 2 ):?>
+        <div class="card card-style">
+			<div class="content">
+				<h5>Location</h4>
+                <p class="mb-1"><?= $post->info->address ?? ''  ?></p>
+                <?php if(!empty($post->info->price)) :?>
+                <h5>Price</h4>
+                <p>Start From IDR <?= number_format($post->info->price)  ?></p>
+                <?php endif;?>
+                <?php if(!empty($post->info->url)) :?>
+				<a href="<?=$post->info->url ?>" class="default-link btn btn-m rounded-sm font-700 text-uppercase btn-full gradient-green border-0"><?= $post->type == 3 ? 'Book Now':'Location'?></a>
+                <?php endif;?>
+			</div>
+		</div>
+        <?php endif;?>
         
     </div>
     <!-- Page content ends here-->

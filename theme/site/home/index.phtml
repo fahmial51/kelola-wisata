@@ -6,70 +6,14 @@
 ?>
 <div class="header header-fixed header-logo-center header-auto-show">
     <a href="/" class="header-title"><?= $title ?></a>
-    <a href="#" data-menu="menu-main" class="header-icon header-icon-4"><i class="fas fa-bars"></i></a>
-    <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-dark"><i class="fas fa-sun"></i></a>
-    <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-light"><i class="fas fa-moon"></i></a>
 </div>
 
 <div class="page-title page-title-fixed">
     <h1><?= $title ?></h1>
-    <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i class="fa fa-share-alt"></i></a>
-    <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i class="fa fa-moon"></i></a>
-    <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i class="fa fa-lightbulb color-yellow-dark"></i></a>
-    <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i class="fa fa-bars"></i></a>
 </div>
 <div class="page-title-clear"></div>
 
 <div class="page-content mt-n1">
-    <div class="content mt-n4 mb-4">
-        <div class="search-box search-dark shadow-sm border-0 mt-4 bg-theme rounded-sm bottom-0">
-            <i class="fa fa-search ms-1"></i>
-            <input type="text" class="border-0" placeholder="Searching for something? Try 'dubai'" data-search>
-        </div>
-        <div class="search-results disabled-search-list">
-            <div>
-                <a href="destination_detail.html" data-filter-item data-filter-name="all city night life dubai party neon ">
-                    <div class="d-flex mt-4">
-                        <div class="align-self-center">
-                            <img src="<?= $this->asset('images/travel/1s.jpg');?>" class="rounded-m me-3" width="60">
-                        </div>
-                        <div class="align-self-center">
-                            <h2 class="font-15 font-600 mb-0 line-height-s mt-1">City Nights <br> Dubai Destination </h2>
-                        </div>
-                        <div class="ms-auto ps-3 align-self-center text-center">
-                            <span class="btn btn-xs gradient-blue text-uppercase font-600 rounded-s border-0">Book Now</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" data-filter-item data-filter-name="all yoesemite park natural nature waterfall">
-                    <div class="d-flex mt-4">
-                        <div class="align-self-center">
-                            <img src="<?= $this->asset('images/travel/6s.jpg');?>" class="rounded-m me-3" width="60">
-                        </div>
-                        <div class="align-self-center">
-                            <h2 class="font-15 font-600 mb-0 line-height-s mt-1">Yosemite Natural <br>Park Expedition </h2>
-                        </div>
-                        <div class="ms-auto ps-3 align-self-center text-center">
-                            <span class="btn btn-xs gradient-blue text-uppercase font-600 rounded-s border-0">Book Now</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" data-filter-item data-filter-name="all bali nature beauty earth wonder hike">
-                    <div class="d-flex mt-4">
-                        <div class="align-self-center">
-                            <img src="<?= $this->asset('images/travel/7s.jpg');?>" class="rounded-m me-3" width="60">
-                        </div>
-                        <div class="align-self-center">
-                            <h2 class="font-15 font-600 mb-0 line-height-s mt-1">Bali's Natural<br>Wonders Hike </h2>
-                        </div>
-                        <div class="ms-auto ps-3 align-self-center text-center">
-                            <span class="btn btn-xs gradient-blue text-uppercase font-600 rounded-s border-0">Book Now</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
     <div class="search-no-results disabled mt-4">
         <div class="card card-style">
             <div class="content">
@@ -85,7 +29,7 @@
     <div class="content mt-0 mb-n1">
         <div class="d-flex">
             <div class="align-self-center">
-                <h1 class="mb-0 font-16">Destination at xxx</h1>
+                <h1 class="mb-0 font-16">Destination at Bogor</h1>
             </div>
             <div class="ms-auto align-self-center">
                 <a href="<?= $this->router->to('sitePostList', ['type' => 'destination '])?>" class="float-end font-12 font-400">See All</a>
@@ -180,55 +124,32 @@
         </div>
     </div>
 
-    <div class="content mb-n1">
+    <div class="content mb-0">
         <div class="d-flex">
             <div class="align-self-center">
-                <h1 class="mb-0 font-16">Get Local Souvernirs</h1>
+                <h1 class="mb-0 font-18">Get Local Souvernirs</h1>
             </div>
             <div class="ms-auto align-self-center">
-                <a href="<?= $this->router->to('sitePostList', ['type' => 'souvernir '])?>" class="float-end font-12 font-400">See All</a>
+                <a href="<?= $this->router->to('siteProductList')?>" class="float-end font-12 font-400">Order Now</a>
             </div>
         </div>
-        <div class="row mb-n4">
-            <div class="col-6 pe-1">
-                <a href="souvernir_detail.html">
-                <div class="card card-style mx-0" style="background-image:url(<?= $this->asset('images/travel/1m.jpg');?>);" data-card-height="350">
-                    <div class="card-bottom p-3">
-                        <h2 class="color-white">Store 1</h2>
-                        <p class="color-white opacity-60 line-height-s">
-                            Experience a Night Life like never before.
-                        </p>
+    </div>	
+
+    <div class="splide story-slider visible-slider slider-no-arrows slider-no-dots" id="tripple-slider-2">
+        <div class="splide__track">
+            <div class="splide__list">
+                <?php foreach($products as $product):?>
+                <div class="splide__slide">
+                    <div class="card m-2 mb-1 card-style">
+                        <img src="<?= $product->cover->url ?? $this->asset('images/pictures/17s.jpg');?>" class="img-fluid">
+                        <div class="p-2 bg-theme rounded-sm">
+                            <h4 class="font-17 pt-1 line-height-s pb-0 mb-n1"><?= $product->name->safe ?></h4>
+                            <span class="font-10 mb-0">IDR <?= number_format($product->price->one) ?></span>
+                        </div>
                     </div>
-                    <div class="card-overlay bg-gradient opacity-30"></div>
-                    <div class="card-overlay bg-gradient"></div>
+                    
                 </div>
-            </a>
-            </div>
-            <div class="col-6">
-                <a href="souvernir_detail.html">
-                <div class="card card-style mx-0 mb-2" style="background-image:url(<?= $this->asset('images/travel/8m.jpg');?>);" data-card-height="170">
-                    <div class="card-bottom p-3">
-                        <h2 class="color-white">Store 2</h2>
-                        <p class="color-white opacity-60 line-height-s font-12">
-                            Nature's beauty explored. Pure beauty.
-                        </p>
-                    </div>
-                    <div class="card-overlay bg-gradient opacity-30"></div>
-                    <div class="card-overlay bg-gradient"></div>
-                </div>
-                </a>
-                <a href="souvernir_detail.html">
-                <div class="card card-style mx-0 mb-0" style="background-image:url(<?= $this->asset('images/travel/5m.jpg');?>);" data-card-height="170">
-                    <div class="card-bottom p-3">
-                        <h2 class="color-white">Store 3</h2>
-                        <p class="color-white opacity-60 line-height-s font-12">
-                            A natura park and wonder of the world
-                        </p>
-                    </div>
-                    <div class="card-overlay bg-gradient opacity-30"></div>
-                    <div class="card-overlay bg-gradient"></div>
-                </div>
-            </a>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

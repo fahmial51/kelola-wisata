@@ -49,5 +49,20 @@ return [
     'site-post' => 'https://github.com/getmim/site-post.git',
     'lib-event' => 'https://github.com/getmim/lib-event.git',
     'lib-worker' => 'https://github.com/getmim/lib-worker.git',
-    'lib-curl' => 'https://github.com/getmim/lib-curl.git'
+    'lib-curl' => 'https://github.com/getmim/lib-curl.git',
+    'admin-product' => 'https://github.com/getmim/admin-product.git',
+    'product' => 'https://github.com/getmim/product.git',
+    'site-product' => 'https://github.com/getmim/site-product.git',
+    'purchase-delivery' => 'https://github.com/getmim/purchase-delivery.git',
+    'purchase' => 'https://github.com/getmim/purchase.git',
+    'lib-courier' => 'https://github.com/getmim/lib-courier.git',
+    'cart' => 'https://github.com/getmim/cart.git',
+    'api-cart' => 'https://github.com/getmim/api-cart.git',
+    'api-purchase' => 'https://github.com/getmim/api-purchase.git',
+    'admin-contact' => 'https://github.com/getmim/admin-contact.git',
+    'contact' => 'https://github.com/getmim/contact.git',
+    'lib-mailer' => 'https://github.com/getmim/lib-mailer.git',
+    'site-contact' => 'https://github.com/getmim/site-contact.git',
+    'admin-robot-txt' => 'https://github.com/getmim/admin-robot-txt.git',
+    'admin-setting' => 'https://github.com/getmim/admin-setting.git'
 ];

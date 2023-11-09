@@ -76,7 +76,7 @@ return [
                 'path' => [
                     'value' => '/'
                 ],
-                'handler' => 'Site\\Controller\\Home::index'
+                'handler' => 'SitePost\\Controller\\Post::list'
             ],
             'siteFeed' => [
                 'path' => [

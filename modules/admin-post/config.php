@@ -240,7 +240,7 @@ return [
                     'rules' => []
                 ],
                 'info-phone' => [
-                    'label' => 'Phone',
+                    'label' => 'Whatsapp Number',
                     'type' => 'tel',
                     'rules' => []
                 ],

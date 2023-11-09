@@ -1,7 +1,7 @@
 <div id="footer-bar" class="footer-bar-6">
-    <a href="<?= $this->router->to('sitePostList', ['type' => 'destination']) ?>" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'destination' ? 'active-nav':''?>"><i class="fa fa-layer-group"></i><span>Destinasi</span></a>
-    <a href="<?= $this->router->to('sitePostList', ['type' => 'article']) ?>" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'article' ? 'active-nav':''?>"><i class="fa fa-file"></i><span>Event</span></a>
-    <a href="<?= $this->router->to('sitePostList', ['type' => 'tour-guide']) ?>" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'tour-guide' ? 'active-nav':''?>"><i class="fa fa-home"></i><span>Tour Guide</span></a>
-    <a href="souvernir_list.html" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'souvernir' ? 'active-nav':''?>"><i class="fa fa-camera"></i><span>Souvernirs</span></a>
-    <a href="<?= $this->router->to('sitePostList', ['type' => 'hotel']) ?>" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'hotel' ? 'active-nav':''?>"><i class="fa fa-bars"></i><span>Hotel</span></a>
+    <a href="<?= $this->router->to('siteHome') ?>" class="<?= $this->req->route->name == 'siteHome' ? 'active-nav':''?>"><i class="fa fa-search"></i><span>Destinasi</span></a>
+    <a href="<?= $this->router->to('sitePostList', ['type' => 'information']) ?>" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'information' ? 'active-nav':''?>"><i class="fa fa-hashtag"></i><span>Info</span></a>
+    <a href="<?= $this->router->to('sitePostList', ['type' => 'activity']) ?>" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'activity' ? 'active-nav':''?>"><i class="fa fa-paper-plane"></i><span>Aktivitas</span></a>
+    <a href="<?= $this->router->to('siteProductList')?>" class="<?= $this->req->route->name == 'siteProductList' ? 'active-nav':''?>"><i class="fa fa-shopping-basket"></i><span>Suvenir</span></a>
+    <a href="<?= $this->router->to('sitePostList', ['type' => 'hotel']) ?>" class="<?= $this->req->route->name == 'sitePostList' && $this->req->param->type == 'hotel' ? 'active-nav':''?>"><i class="fa fa-bed"></i><span>Hotel</span></a>
 </div>
