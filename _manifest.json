@@ -7,7 +7,7 @@
 "name" : "Kelola Wisata",
 "scope" : "https://kelola-wisata.bisabanget.my.id/",
 "display" : "fullscreen",
-"start_url" : "https://kelola-wisata.bisabanget.my.id/",
+"start_url" : "https://kelola-wisata.bisabanget.my.id/index.html",
 "short_name" : "Kelola Wisata",
 "description" : "",
 "orientation" : "portrait",
