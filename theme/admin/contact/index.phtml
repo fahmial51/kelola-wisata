@@ -28,7 +28,7 @@
                         <li class="list-group-item<?= ($seen?' list-group-item-seen':'') ?>">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">
-                                    <?= $contact->subject->safe->chars(50) ?>...
+                                    <?= $contact->fullname ?> - <?= $contact->post->title->safe->chars(50) ?>
                                 </h5>
                                 <div>
                                     <?php if($contact->user): ?>
@@ -59,7 +59,12 @@
                                 &middot;
                                 <span title="By">
                                     <i class="fas fa-user"></i>
-                                    <?= $contact->fullname->safe ?> ( <?= $contact->email->safe ?> )
+                                    <?= $contact->fullname->safe ?> ( <?= $contact->phone->safe ?> | <?= $contact->email->safe ?> )
+                                </span>
+                                &middot;
+                                <span title="Amount of people">
+                                    <i class="fas fa-users"></i>
+                                    <?= $contact->amount ?> People
                                 </span>
                             </small>
                         </li>

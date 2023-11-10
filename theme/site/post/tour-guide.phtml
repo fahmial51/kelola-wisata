@@ -43,14 +43,22 @@
 			<div class="content">
 				<h4>Make Reservation</h4>
                 <?php if($error): ?>
-					<div role="alert" class="mb-5 alert alert-small rounded-s  bg-red-dark">
-						<span><i class="fa fa-check color-white"></i></span>
-						<strong class="color-white"><strong>Whoops</strong> <?= $error ?></strong>
+					<div id="menu-warning-2" class="menu menu-box-bottom bg-red-dark rounded-m menu-active" data-menu-height="335" data-menu-effect="menu-over" style="display: block; height: 335px;">
+						<h1 class="text-center mt-4"><i class="fa fa-3x fa-times-circle scale-box color-white shadow-xl rounded-circle"></i></h1>
+						<h1 class="text-center mt-3 text-uppercase color-white font-700">Wooops!</h1>
+						<p class="boxed-text-l color-white opacity-70">
+							Please check your form again <br> <?= $error ?>
+						</p>
+						<a href="#" class="close-menu btn btn-m btn-center-l button-s shadow-l rounded-s text-uppercase font-600 bg-white color-black">Hmmm, Check again?</a>
 					</div>
                 <?php elseif($success): ?>
-					<div role="alert" class="mb-5 alert alert-small rounded-s  bg-green-dark">
-						<span><i class="fa fa-check color-white"></i></span>
-						<strong class="color-white">Thankyou, we'll get in touch with you in no time.</strong>
+					<div id="menu-success-2" class="menu menu-box-bottom bg-green-dark rounded-m menu-active" data-menu-height="335" data-menu-effect="menu-over" style="display: block; height: 335px;">
+						<h1 class="text-center mt-4"><i class="fa fa-3x fa-check-circle scale-box color-white shadow-xl rounded-circle"></i></h1>
+						<h1 class="text-center mt-3 font-700 color-white">All's Good</h1>
+						<p class="boxed-text-l color-white opacity-70">
+							Thankyou, we'll get in touch with you in no time.
+						</p>
+						<a href="#" class="close-menu btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-600 bg-white color-black">Great, Thanks!</a>
 					</div>
                 <?php else: ?>
                     <p>Please provide your basic information, and tell us more about your activity.</p>
@@ -58,6 +66,7 @@
 
 				<form method="POST" action="">
                 <input type="hidden" name="type" value="1">
+                <input type="hidden" name="post" value="<?= $post->id ?>">
 				<div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
 					<input type="name" name="fullname" class="form-control validate-name" id="form1" placeholder="John Doe" required>
 					<label for="form1" class="color-highlight">Name</label>

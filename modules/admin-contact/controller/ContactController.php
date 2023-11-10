@@ -36,7 +36,7 @@ class ContactController extends \Admin\Controller
         $contact = Contact::getOne(['id'=>$id]);
         if(!$contact)
             return $this->show404();
-        $params = $this->getParams('Reply Contact');
+        $params = $this->getParams('Reservation Details');
 
         if(is_null($contact->seen)){
             $contact->seen = date('Y-m-d H:i:s');
@@ -45,7 +45,7 @@ class ContactController extends \Admin\Controller
 
         $xcontact = clone $contact;
 
-        $params['contact'] = Formatter::format('contact', $xcontact, ['user']);
+        $params['contact'] = Formatter::format('contact', $xcontact, ['user', 'post']);
         $params['form']    = null;
 
         if($contact->user)
@@ -88,7 +88,7 @@ class ContactController extends \Admin\Controller
 
         $contacts = Contact::get($cond, $rpp, $page, ['created'=>false]) ?? [];
         if($contacts)
-            $contacts = Formatter::formatMany('contact', $contacts, ['user']);
+            $contacts = Formatter::formatMany('contact', $contacts, ['user', 'post']);
 
         $params             = $this->getParams('Contact');
         $params['contacts'] = $contacts;

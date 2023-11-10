@@ -22,6 +22,13 @@ return [
                 ],
                 'index' => 2000
             ],
+            'post' => [
+                'type' => 'INT',
+                'attrs' => [
+                    'null' => true
+                ],
+                'index' => 2000
+            ],
             'type' => [
                 'type' => 'INT',
                 'attrs' => [
@@ -53,7 +60,7 @@ return [
                 ],
                 'index' => 5000
             ],
-            'people_count' => [
+            'amount' => [
                 'type' => 'INT',
                 'length' => 200,
                 'attrs' => [

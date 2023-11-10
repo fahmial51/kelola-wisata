@@ -47,6 +47,11 @@ return [
         ],
         'files' => []
     ],
+    'libEnum' => [
+        'enums' => [
+            'contact.type' => [1=>'Activity', 2=>'Product']
+        ]
+    ],
     'libFormatter' => [
         'formats' => [
             'contact' => [
@@ -56,16 +61,36 @@ return [
                 'ip' => [
                     'type' => 'text'
                 ],
+                'post' => [
+                    'type' => 'object',
+                    'model' => [
+                        'name'  => 'Post\\Model\\Post',
+                        'field' => 'id',
+                        'type'  => 'number'
+                    ],
+                    'format' => 'post'
+                ],
+                'type' => [
+                    'type' => 'enum',
+                    'enum' => 'contact.type',
+                    'vtype' => 'int'
+                ],
                 'fullname' => [
                     'type' => 'text'
                 ],
                 'email' => [
                     'type' => 'text'
                 ],
-                'subject' => [
+                'phone' => [
                     'type' => 'text'
                 ],
-                'content' => [
+                'amount' => [
+                    'type' => 'text'
+                ],
+                'date' => [
+                    'type' => 'date'
+                ],
+                'description' => [
                     'type' => 'text'
                 ],
                 'user' => [
