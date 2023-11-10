@@ -83,7 +83,17 @@ class ContactController extends \Admin\Controller
             return $this->show404();
 
         $cond = $pcond = [];
+        if($q = $this->req->getQuery('q'))
+            $pcond['q'] = $cond['q'] = $q;
 
+        if($status = $this->req->getQuery('status')) {
+            if($status == 1) {
+                $pcond['replyed'] = $cond['replyed'] =['__op', '=', NULL];
+            } else if($status == 2) {
+                $pcond['replyed'] = $cond['replyed'] = ['__op', '!=', NULL];
+            }
+        }
+        
         list($page, $rpp) = $this->req->getPager(25, 50);
 
         $contacts = Contact::get($cond, $rpp, $page, ['created'=>false]) ?? [];
@@ -93,6 +103,7 @@ class ContactController extends \Admin\Controller
         $params             = $this->getParams('Activity Reservation');
         $params['contacts'] = $contacts;
         $params['form']     = new Form('admin-contact.index');
+        $params['form']->validate( (object)$this->req->get() );
 
         // pagination
         $params['total'] = $total = Contact::count($cond);

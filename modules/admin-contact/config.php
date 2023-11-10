@@ -92,7 +92,25 @@ return [
     ],
     'libForm' => [
         'forms' => [
-            'admin-contact.index' => [],
+            'admin-contact.index' => [
+                'q' => [
+                    'label' => 'Search',
+                    'type' => 'search',
+                    'nolabel' => TRUE,
+                    'rules' => []
+                ],
+                'status' => [
+                    'label' => 'Status',
+                    'type' => 'select',
+                    'nolabel' => TRUE,
+                    'options' => [
+                        '0' => 'All',
+                        '1' => 'Unread',
+                        '2' => 'Done',
+                    ],
+                    'rules' => []
+                ]
+            ],
             'admin-contact.reply' => [
                 'reply' => [
                     'label' => 'Note',
