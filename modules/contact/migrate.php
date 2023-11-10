@@ -94,6 +94,12 @@ return [
                 'attrs' => [],
                 'index' => 8000
             ],
+            'evidence' => [
+                'type' => 'VARCHAR',
+                'length' => 200,
+                'attrs' => [],
+                'index' => 8000
+            ],
 
             'seen' => [
                 'type' => 'DATETIME',

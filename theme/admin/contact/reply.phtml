@@ -14,7 +14,7 @@
 
 <div class="container p-3">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><?= $contact->fullname ?> - <?= $contact->post->title ?></h5>
@@ -54,6 +54,60 @@
                     <div class="card-text">
                         Note: <br>
                         <?= nl2br($contact->description->safe) ?></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Follow up Evidence</h5>
+                    <?php if($form): ?>
+                        <form method="POST" class="row needs-validation main" novalidate>
+                            <div class="col-md-12">
+                                <?= $form->csrfField('noob') ?>
+                                <?= $form->field('reply') ?>
+                                <?= $form->field('evidence') ?>
+                                <div class="text-right">
+                                    <button class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <small>Upload chat/whatsapp/email follow up screenshot as evidence</small>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <div>
+                            <h6 class="card-subtitle text-muted">
+                                <?= $contact->user->fullname->safe ?>
+                            </h6>
+                            <small class="text-muted"><?= $contact->replyed->format('M d, Y H:i') ?></small>
+                        </div>
+                        <hr>
+                        <div class="card-text" style="font-size:.8rem;">
+                            <div class="form-group">
+                                <label>Follow up Note</label>
+                                <textarea class="form-control" readonly><?= $contact->reply ?></textarea>
+                                
+                            </div>
+                                
+                            <div class="form-group">
+                                <label for="evidence-<?= $contact->id ?>">Evidence</label>                            
+                                <input id="evidence-<?= $contact->id ?>" class="formimage-model" name="evidence" value="<?= $contact->evidence ?>" >
+                                <div class="formimage" id="evidence-<?= $contact->id ?>-container" data-model="#evidence-<?= $contact->id ?>">
+                                    <a class="formimage-preview" target="_blank" href="<?= $contact->evidence ?>" style="background-image:url('<?= $contact->evidence ?>')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                            <polyline points="21 15 16 10 5 21"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

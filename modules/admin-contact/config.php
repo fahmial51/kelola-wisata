@@ -95,9 +95,15 @@ return [
             'admin-contact.index' => [],
             'admin-contact.reply' => [
                 'reply' => [
-                    'label' => 'Reply',
-                    'type' => 'summernote',
-                    'nolabel' => true,
+                    'label' => 'Note',
+                    'type' => 'textarea',
+                    'rules' => [
+                        'required' => true 
+                    ]
+                ],
+                'evidence' => [
+                    'label' => 'Evidence',
+                    'type' => 'image',
                     'rules' => [
                         'required' => true 
                     ]

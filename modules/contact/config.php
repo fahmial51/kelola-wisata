@@ -105,6 +105,9 @@ return [
                 'reply' => [
                     'type' => 'text'
                 ],
+                'evidence' => [
+                    'type' => 'text'
+                ],
                 'seen' => [
                     'type' => 'date'
                 ],

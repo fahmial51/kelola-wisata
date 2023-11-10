@@ -86,30 +86,30 @@ class Contact
         // send email to the contact
         $contact = _Contact::getOne(['id'=>$contact->id]);
 
-        $xcontact = Formatter::format('contact', clone $contact);
-        $params = [
-            'contact' => $xcontact
-        ];
+        // $xcontact = Formatter::format('contact', clone $contact);
+        // $params = [
+        //     'contact' => $xcontact
+        // ];
 
-        $mail = [
-            'to' => [
-                [
-                    'name'  => $xcontact->fullname->safe,
-                    'email' => $xcontact->email->safe
-                ]
-            ],
-            'subject' => 'Re: ' . $xcontact->subject,
-            'text' => $xcontact->reply->clean,
-            'view' => [
-                'path' => 'contact/user',
-                'params' => $params
-            ]
-        ];
+        // $mail = [
+        //     'to' => [
+        //         [
+        //             'name'  => $xcontact->fullname->safe,
+        //             'email' => $xcontact->email->safe
+        //         ]
+        //     ],
+        //     'subject' => 'Re: ' . $xcontact->subject,
+        //     'text' => $xcontact->reply->clean,
+        //     'view' => [
+        //         'path' => 'contact/user',
+        //         'params' => $params
+        //     ]
+        // ];
 
-        if(!Mailer::send($mail)){
-            self::$last_error = Mailer::getError();
-            return null;
-        }
+        // if(!Mailer::send($mail)){
+        //     self::$last_error = Mailer::getError();
+        //     return null;
+        // }
 
         return $contact;
     }
