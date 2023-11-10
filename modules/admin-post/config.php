@@ -115,9 +115,9 @@ return [
                             'perms' => 'manage_post'
                         ],
                         'all-tour-guide' => [
-                            'label' => 'All Tour Guide',
+                            'label' => 'All Activity',
                             'icon'  => '<i></i>',
-                            'route' => ['adminPost', ['type' => 'tour-guide']],
+                            'route' => ['adminPost', ['type' => 'activity']],
                             'perms' => 'manage_post'
                         ]
                     ]

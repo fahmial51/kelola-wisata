@@ -107,12 +107,12 @@ class PostController extends \Site\Controller
 
                 if(!Contact::add((array)$fields)){
                     $params['error'] = Contact::$last_error;
-                    return $this->resp('post/tour-guide', $params);
+                    return $this->resp('post/activity', $params);
                 }
 
                 $params['success'] = true;
             }
-            return $this->resp('post/tour-guide', $params);
+            return $this->resp('post/activity', $params);
         }
         return $this->resp('post/single', $params);
     }

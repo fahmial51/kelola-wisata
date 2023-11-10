@@ -43,15 +43,15 @@ class PostController extends \Admin\Controller
                 break;
             case 'article':
                 $type = 2;
-                $type_text = 'Article & Event';
+                $type_text = 'Article';
                 break;
             case 'hotel':
                 $type = 3;
                 $type_text = 'Hotel';
                 break;
-            case 'tour-guide':
+            case 'activity':
                 $type = 4;
-                $type_text = 'Tour Guide';
+                $type_text = 'Activity';
                 break;
             default:
                 $type = 1;
@@ -191,15 +191,15 @@ class PostController extends \Admin\Controller
                 break;
             case 'article':
                 $type = 2;
-                $type_text = 'Article & Event';
+                $type_text = 'Article';
                 break;
             case 'hotel':
                 $type = 3;
                 $type_text = 'Hotel';
                 break;
-            case 'tour-guide':
+            case 'activity':
                 $type = 4;
-                $type_text = 'Tour Guide';
+                $type_text = 'Activity';
                 break;
             default:
                 $type = 1;

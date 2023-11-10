@@ -38,7 +38,7 @@ return [
                 'index' => 4000
             ],
             'type' => [
-                'comment' => '1 Destination, 2 Event & Article, 3 Hotel, 4 Tour Guide',
+                'comment' => '1 Destination, 2 Event & Article, 3 Hotel, 4 Activity',
                 'type' => 'TINYINT',
                 'attrs' => [
                     'unsigned' => true,
