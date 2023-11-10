@@ -90,7 +90,7 @@ class ContactController extends \Admin\Controller
         if($contacts)
             $contacts = Formatter::formatMany('contact', $contacts, ['user', 'post']);
 
-        $params             = $this->getParams('Contact');
+        $params             = $this->getParams('Activity Reservation');
         $params['contacts'] = $contacts;
         $params['form']     = new Form('admin-contact.index');
 
