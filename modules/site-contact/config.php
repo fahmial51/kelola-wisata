@@ -105,7 +105,14 @@ return [
                         'required' => TRUE
                     ]
                 ],
-                'people_count' => [
+                'post' => [
+                    'label' => 'post',
+                    'type' => 'text',
+                    'rules' => [
+                        'required' => TRUE
+                    ]
+                ],
+                'amount' => [
                     'label' => 'Fullname',
                     'type' => 'text',
                     'rules' => []
