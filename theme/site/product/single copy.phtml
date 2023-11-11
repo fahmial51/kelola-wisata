@@ -1,10 +1,16 @@
 <div class="page-content">
-    <div class="card card-style" style="background-image: url(<?= $product->cover->url ?>);" data-card-height="300"></div>
+	<div class="card rounded-0" style="background-image: url(<?= $product->cover->url ?>);" data-card-height="450">
+		<div class="card-top mt-3 pb-5 ps-3">
+			<a href="#" data-back-button class="icon icon-s bg-theme rounded-xl float-start me-3"><i class="fa color-theme fa-arrow-left"></i></a>
+		</div>
+		<div class="card-overlay bg-gradient"></div>
+	</div>
 	
 	<!-- margin top and margin bottom negative values repesent how much you want the article to go over the above and below image-->
-	<div class="card card-style" style="">
-		<div class="content" style="overflow: auto">
-			<h1 class="font-24 font-800">
+	<div class="card card-style" style="margin-top:-100px;z-index:1">
+		<div class="content">
+			<p class="mb-n1 color-highlight font-600"><?= implode(', ', $product->category)?></p>
+			<h1>
 				<?= $product->name->safe ?>
 			</h1>
 			
@@ -15,7 +21,7 @@
 			
 			<div class="d-flex">
 				<div>
-					<h5>Price</h5>
+					<h5>Price per person</h5>
 					<p> IDR <?= number_format($product->price->one) ?? '-' ?></p>
 				</div>
 			</div>
@@ -24,11 +30,11 @@
 	
 	<div class="card card-style">
 		<div class="content">
-			<h4>Make Delivery Order</h4>
+			<h4>Make Order</h4>
 			<p>Mohon masukkan informasi pemesanan di bawah ini. Pembayaran dilakukan secara COD</p>
 
 			<form method="POST" action="">
-			<input type="hidden" name="type" value="2">
+			<input type="hidden" name="type" value="1">
 			<input type="hidden" name="post" value="<?= $product->id ?>">
 			<div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
 				<input type="name" name="fullname" class="form-control validate-name" id="form1" placeholder="John Doe" required>

@@ -82,7 +82,7 @@ class ContactController extends \Admin\Controller
         if(!$this->can_i->manage_contact)
             return $this->show404();
 
-        $cond = $pcond = [];
+        $cond = $pcond = ['type' => 1];
         if($q = $this->req->getQuery('q'))
             $pcond['q'] = $cond['q'] = $q;
 
@@ -119,6 +119,101 @@ class ContactController extends \Admin\Controller
         }
 
         $this->resp('contact/index', $params);
+    }
+    
+    public function deliveryAction(){
+        if(!$this->user->isLogin())
+            return $this->loginFirst(1);
+        if(!$this->can_i->manage_contact)
+            return $this->show404();
+
+        $id = $this->req->param->id;
+        $contact = Contact::getOne(['id'=>$id]);
+        if(!$contact)
+            return $this->show404();
+        $params = $this->getParams('Order Details');
+
+        if(is_null($contact->seen)){
+            $contact->seen = date('Y-m-d H:i:s');
+            Contact::set(['seen'=>$contact->seen], ['id'=>$id]);
+        }
+
+        $xcontact = clone $contact;
+
+        $params['contact'] = Formatter::format('contact', $xcontact, ['user', 'post']);
+        $params['form']    = null;
+
+        if($contact->user)
+            return $this->resp('order/reply', $params);
+
+        $form                 = new Form('admin-contact.reply');
+        $params['form']       = $form;
+        if(!($valid = $form->validate($contact)) || !$form->csrfTest('noob'))
+            return $this->resp('order/reply', $params);
+
+        $reply = (array)$valid;
+        $reply['user'] = $this->user->id;
+        if(!_C::reply($contact, $reply))
+            deb(( _C::$last_error ?? Contact::lastError() ));
+
+        // add the log
+        $this->addLog([
+            'user'   => $this->user->id,
+            'object' => $id,
+            'parent' => 0,
+            'method' => 2,
+            'type'   => 'contact',
+            'original' => $contact,
+            'changes'  => $valid
+        ]);
+
+        $next = $this->router->to('adminOrderDelivery', ['id'=>$id]);
+        $this->res->redirect($next);
+    }
+
+    public function orderAction(){
+        if(!$this->user->isLogin())
+            return $this->loginFirst(1);
+        if(!$this->can_i->manage_contact)
+            return $this->show404();
+
+        $cond = $pcond = ['type' => 2];
+        if($q = $this->req->getQuery('q'))
+            $pcond['q'] = $cond['q'] = $q;
+
+        if($status = $this->req->getQuery('status')) {
+            if($status == 1) {
+                $pcond['replyed'] = $cond['replyed'] =['__op', '=', NULL];
+            } else if($status == 2) {
+                $pcond['replyed'] = $cond['replyed'] = ['__op', '!=', NULL];
+            }
+        }
+        
+        list($page, $rpp) = $this->req->getPager(25, 50);
+
+        $contacts = Contact::get($cond, $rpp, $page, ['created'=>false]) ?? [];
+        if($contacts)
+            $contacts = Formatter::formatMany('contact', $contacts, ['user', 'post']);
+
+        $params             = $this->getParams('Product Order');
+        $params['contacts'] = $contacts;
+        $params['form']     = new Form('admin-contact.index');
+        $params['form']->validate( (object)$this->req->get() );
+
+        // pagination
+        $params['total'] = $total = Contact::count($cond);
+        if($total > $rpp){
+            $params['pages'] = new Paginator(
+                $this->router->to('adminContact'),
+                $total,
+                $page,
+                $rpp,
+                10,
+                $pcond
+            );
+        }
+
+        $this->resp('order/index', $params);
     }
 
     public function removeAction(){

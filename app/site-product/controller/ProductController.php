@@ -9,7 +9,10 @@ namespace SiteProduct\Controller;
 
 use SiteProduct\Library\Meta;
 use Product\Model\Product;
+use Contact\Library\Contact;
 use LibFormatter\Library\Formatter;
+use LibForm\Library\Form;
+use LibRecaptcha\Library\Validator;
 use ProductLastSeen\Library\Seen;
 
 class ProductController extends \Site\Controller
@@ -45,11 +48,33 @@ class ProductController extends \Site\Controller
             Seen::add($this->user->id, $product->id);
 
         $product = Formatter::format('product', $product, ['user']);
+        $form = new Form('site-contact');
 
         $params = [
             'product' => $product,
-            'meta' => Meta::single($product)
+            'meta'    => Meta::single($product),
+            'form'    => $form,
+            'error'   => null,
+            'success' => null
         ];
+
+        if(!is_null($fields = $form->validate())){
+            if(module_exists('lib-recaptcha')){
+                $token = $this->req->getPost('secure');
+                if(is_null(Validator::validate($token))){
+                    $params['error'] = 'Invalid Credentials';
+                    $this->res->render('contact/single', $params);
+                    return $this->res->send();
+                }
+            }
+
+            if(!Contact::add((array)$fields)){
+                $params['error'] = Contact::$last_error;
+                return $this->resp('product/single', $params);
+            }
+
+            $params['success'] = true;
+        }
 
         return $this->resp('product/single', $params);
     }

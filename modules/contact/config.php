@@ -62,13 +62,27 @@ return [
                     'type' => 'text'
                 ],
                 'post' => [
-                    'type' => 'object',
-                    'model' => [
-                        'name'  => 'Post\\Model\\Post',
-                        'field' => 'id',
-                        'type'  => 'number'
+                    'type' => 'object-switch',
+                    'field' => 'type',
+                    'cases' => [
+                        1 => [
+                            'model' => [
+                                'name'  => 'Post\\Model\\Post',
+                                'field' => 'id',
+                                'type'  => 'number'
+                            ],
+                            'format' => 'post'
+                        ],
+                        2 => [
+                            'model' => [
+                                'name'  => 'Product\\Model\\Product',
+                                'field' => 'id',
+                                'type'  => 'number'
+                            ],
+                            'format' => 'product'
+                        ],
                     ],
-                    'format' => 'post'
+                    
                 ],
                 'type' => [
                     'type' => 'enum',

@@ -48,7 +48,7 @@ class Meta
 
         $meta_image = [
             '@type'         => 'ImageObject',
-            'url'           => $page->cover->url->_600x400,
+            'url'           => $page->cover->url,
             'height'        => 600,
             'width'         => 400
         ];

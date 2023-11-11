@@ -72,7 +72,7 @@ return [
             'date' => [
                 'type' => 'DATE',
                 'attrs' => [
-                    'null' => false 
+                    'null' => true 
                 ],
                 'index' => 5000
             ],

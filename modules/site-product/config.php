@@ -71,7 +71,7 @@ return [
                         'slug' => 'slug'
                     ]
                 ],
-                'method' => 'GET',
+                'method' => 'GET|POST',
                 'handler' => 'SiteProduct\\Controller\\Product::single'
             ],
             'siteProductFeed' => [

@@ -29,7 +29,7 @@
                                     <p class="font-11 line-height-s">
                                         <?= $product->meta->description ?? '' ?>
                                     </p>
-                                    <a href="#" class="btn btn-s btn-full border-highlight rounded-s color-highlight mb-3">Order</a>
+                                    <a href="<?= $this->router->to('siteProductSingle', ['slug' => $product->slug])?>" class="btn btn-s btn-full border-highlight rounded-s color-highlight mb-3">Order</a>
                                 </div>
                             </div>
                         </div>

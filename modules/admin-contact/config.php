@@ -62,6 +62,23 @@ return [
                 'method' => 'GET|POST',
                 'handler' => 'AdminContact\\Controller\\Contact::reply'
             ],
+            'adminOrder' => [
+                'path' => [
+                    'value' => '/order'
+                ],
+                'method' => 'GET',
+                'handler' => 'AdminContact\\Controller\\Contact::order'
+            ],
+            'adminOrderDelivery' => [
+                'path' => [
+                    'value' => '/order/(:id)',
+                    'params' => [
+                        'id'  => 'number'
+                    ]
+                ],
+                'method' => 'GET|POST',
+                'handler' => 'AdminContact\\Controller\\Contact::delivery'
+            ],
             'adminContactRemove' => [
                 'path' => [
                     'value' => '/reservation/(:id)/remove',
@@ -82,6 +99,13 @@ return [
                     'icon' => '<i class="fas fa-file-signature"></i>',
                     'priority' => 0,
                     'route' => ['adminContact'],
+                    'perms' => 'manage_contact'
+                ],
+                'order' => [
+                    'label' => 'Product Order',
+                    'icon' => '<i class="fas fa-file-signature"></i>',
+                    'priority' => 0,
+                    'route' => ['adminOrder'],
                     'perms' => 'manage_contact'
                 ]
             ]
