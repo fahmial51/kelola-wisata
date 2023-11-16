@@ -43,7 +43,9 @@
 			<h4>Make Reservation</h4>
 			<p>Please provide your basic information, and tell us more about your activity.</p>
 
-			<form method="POST" action="">
+			<div id="validator-form" class="disabled bg-red-dark content rounded-sm shadow-xl text-center line-height-xs py-3 text-uppercase mb-5 font-700">Form input invalid! Please check your input again</div>
+
+			<form method="POST" action="" class="my-form" id="myForm">
 			<input type="hidden" name="type" value="1">
 			<input type="hidden" name="post" value="<?= $post->id ?>">
 			<div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
@@ -79,7 +81,7 @@
 			</div>
 			
 			<div class="input-style input-style-always-active has-borders no-icon mb-4">
-				<input type="date" name="date" value="2022-12-31" max="2030-01-01" min="2021-01-01" class="form-control validate-text" id="form6" placeholder="Date" required>
+				<input type="date" name="date" value="<?= date('Y-m-d') ?>" max="2030-01-01" min="2021-01-01" class="form-control validate-text" id="form6" placeholder="Date" required>
 				<label for="form6" class="color-highlight">Date</label>
 				<i class="fa fa-check disabled valid me-4 pe-3 font-12 color-green-dark"></i>
 				<i class="fa fa-check disabled invalid me-4 pe-3 font-12 color-red-dark"></i>

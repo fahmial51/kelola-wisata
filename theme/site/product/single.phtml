@@ -27,7 +27,9 @@
 			<h4>Make Delivery Order</h4>
 			<p>Mohon masukkan informasi pemesanan di bawah ini. Pembayaran dilakukan secara COD</p>
 
-			<form method="POST" action="">
+			<div id="validator-form" class="disabled bg-red-dark content rounded-sm shadow-xl text-center line-height-xs py-3 text-uppercase mb-5 font-700">Form input invalid! Please check your input again</div>
+
+			<form method="POST" action="" class="my-form" id="myForm">
 			<input type="hidden" name="type" value="2">
 			<input type="hidden" name="post" value="<?= $product->id ?>">
 			<div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
@@ -63,7 +65,7 @@
 			</div>
 
 			<div class="input-style input-style-always-active has-borders no-icon mb-4">
-				<textarea id="form7" name="description" placeholder="Input delivery address"></textarea>
+				<textarea id="form7" name="description" placeholder="Input delivery address" required></textarea>
 				<label for="form7" class="color-highlight">Address</label>
 			</div>
 			

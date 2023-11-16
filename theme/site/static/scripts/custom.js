@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         var inputField = document.querySelectorAll('input');
         if(inputField.length){
             var mailValidator = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-            var phoneValidator = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+            // var phoneValidator = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+            var phoneValidator = /^[\+]?[(]?[0-9]{4}[)]?[-\s\.]?[0-9]{4}[-\s\.]?[0-9]{4,6}$/;
             var nameValidator = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
             var passwordValidator = /[A-Za-z]{2}[A-Za-z]*[ ]?[A-Za-z]*/;
             var numberValidator = /^(0|[1-9]\d*)$/;
@@ -1070,6 +1071,23 @@ document.addEventListener('DOMContentLoaded', () => {
 				if(shareMenu){shareMenu.forEach(el => {el.addEventListener('click', async () => {menu('menu-share', 'hide',0); try {await navigator.share(shareData)} catch(err){}});});}
 			}
 		}
+
+        //My Form
+        var myForm = document.querySelectorAll('.my-form');
+        if(myForm.length){
+            var form = document.getElementById('myForm');
+            form.onsubmit = function (e) {
+                // Stop the regular form submission
+                e.preventDefault();
+                
+                if(form.querySelectorAll('.invalid:not(.disabled)').length){
+                    document.getElementById('validator-form').classList.remove('disabled');
+                } else {
+                    document.getElementById('validator-form').classList.add('disabled');
+                    form.submit()
+                }
+            };
+        }
 
         //Contact Form
         var contactForm = document.querySelectorAll('.contact-form');
