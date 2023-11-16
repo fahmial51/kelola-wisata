@@ -59,6 +59,7 @@ class Main
 
         if (isset($format->timezone)) {
             $value = new DateTime($value, new \DateTimeZone($format->timezone));
+            $value = $value->setTimezone(new \DateTimeZone(\Mim::$_config->timezone));
         } else {
             $value = new DateTime($value);
         }
