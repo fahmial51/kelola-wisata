@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         var i, e, el; //https://www.w3schools.com/js/js_performance.asp
 
         //Attaching Menu Hider
-        var menuHider = document.getElementsByClassName('menu-hider');
-        if(!menuHider.length){var hider = document.createElement('div'); hider.setAttribute("class", "menu-hider");document.body.insertAdjacentElement('beforebegin', hider);}
-        if(menuHider[0].classList.contains('menu-active')){menuHider[0].classList.remove('menu-active');}
+        // var menuHider = document.getElementsByClassName('menu-hider');
+        // if(!menuHider.length){var hider = document.createElement('div'); hider.setAttribute("class", "menu-hider");document.body.insertAdjacentElement('beforebegin', hider);}
+        // if(menuHider[0].classList.contains('menu-active')){menuHider[0].classList.remove('menu-active');}
 
         //Demo function for programtic creation of Menu
         //menu('menu-settings', 'show', 250);
