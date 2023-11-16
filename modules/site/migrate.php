@@ -7,6 +7,7 @@ return [
                 'frontpage_description'     => ['type' => '5', 'group' => 'Frontpage', 'value' => 'Default site description' ],
                 'frontpage_keywords'        => ['type' => '5', 'group' => 'Frontpage', 'value' => '' ],
                 'frontpage_title'           => ['type' => '1', 'group' => 'Frontpage', 'value' => 'This is frontpage' ],
+                'pwa_splashscreen'           => ['type' => '9', 'group' => 'PWA', 'value' => '' ],
                 'app_contact_phone'         => ['type' => '1', 'group' => 'Social Accounts', 'value' => '' ],
                 'app_contact_email'         => ['type' => '1', 'group' => 'Social Accounts', 'value' => '' ],
                 'app_social_dribbble'       => ['type' => '6', 'group' => 'Social Accounts', 'value' => '' ],
