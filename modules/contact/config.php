@@ -126,13 +126,16 @@ return [
                     'type' => 'date'
                 ],
                 'replyed' => [
-                    'type' => 'date'
+                    'type' => 'date',
+                    'timezone' => 'UTC'
                 ],
                 'updated' => [
-                    'type' => 'date'
+                    'type' => 'date',
+                    'timezone' => 'UTC'
                 ],
                 'created' => [
-                    'type' => 'date'
+                    'type' => 'date',
+                    'timezone' => 'UTC'
                 ]
             ]
         ]

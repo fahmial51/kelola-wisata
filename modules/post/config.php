@@ -117,10 +117,12 @@ return [
                     'type' => 'date'
                 ],
                 'updated' => [
-                    'type' => 'date'
+                    'type' => 'date',
+                    'timezone' => 'UTC'
                 ],
                 'created' => [
-                    'type' => 'date'
+                    'type' => 'date',
+                    'timezone' => 'UTC'
                 ]
             ],
             'post-content' => [

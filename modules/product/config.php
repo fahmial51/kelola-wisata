@@ -95,10 +95,12 @@ return [
                     'type' => 'json'
                 ],
                 'updated' => [
-                    'type' => 'date'
+                    'type' => 'date',
+                    'timezone' => 'UTC'
                 ],
                 'created' => [
-                    'type' => 'date'
+                    'type' => 'date',
+                    'timezone' => 'UTC'
                 ]
             ]
         ]
