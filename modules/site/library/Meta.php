@@ -10,7 +10,7 @@ namespace Site\Library;
 
 class Meta
 {
-    static function single(){
+    static function single($title){
         $result = [
             'head' => [],
             'foot' => []
@@ -31,6 +31,8 @@ class Meta
 
             $meta->$name = $value;
         }
+
+        if(!empty($title)) $meta->title = $title.' - '.$meta->title;
 
         $page = \Mim::$app->req->getQuery('page');
         if($page && $page > 1){

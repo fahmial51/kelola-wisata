@@ -57,6 +57,7 @@ class Controller extends \Mim\Controller
         $content = View::render($view, $params, 'site') ?? '';
 
         $layout_params = [
+            'meta'   => $params['meta'],
             '_meta'   => $params['_meta'],
             'content' => $content
         ];

@@ -7,6 +7,7 @@
 
 namespace SiteProduct\Controller;
 
+use Site\Library\Meta as SiteMeta;
 use SiteProduct\Library\Meta;
 use Product\Model\Product;
 use Contact\Library\Contact;
@@ -29,6 +30,7 @@ class ProductController extends \Site\Controller
         
         $params = [
             'products' => $products,
+            'meta'  => SiteMeta::single('Suvenir'),
             '_meta' => [
                 'title' =>  'Suvenir' 
             ]

@@ -7,6 +7,7 @@
 
 namespace SitePost\Controller;
 
+use Site\Library\Meta as SiteMeta;
 use SitePost\Library\Meta;
 use Post\Model\Post;
 use Contact\Library\Contact;
@@ -61,6 +62,7 @@ class PostController extends \Site\Controller
         }
         $params = [
             'posts' => $posts,
+            'meta'  => SiteMeta::single($type_text),
             '_meta' => [
                 'title' =>  $type_text
             ]

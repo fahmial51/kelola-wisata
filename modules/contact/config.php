@@ -140,21 +140,21 @@ return [
             ]
         ]
     ],
-    'adminSetting' => [
-        'menus' => [
-            'site-contact' => [
-                'label' => 'Contact',
-                'icon' => '<i class="fas fa-file-signature"></i>',
-                'info' => 'Change site contact preference',
-                'perm' => 'update_site_setting',
-                'index' => 0,
-                'options' => [
-                    'site-contact' => [
-                        'label' => 'Change settings',
-                        'route' => ['adminSiteSettingSingle',['group' => 'Contact']]
-                    ]
-                ]
-            ]
-        ]
-    ]
+    // 'adminSetting' => [
+    //     'menus' => [
+    //         'site-contact' => [
+    //             'label' => 'Contact',
+    //             'icon' => '<i class="fas fa-file-signature"></i>',
+    //             'info' => 'Change site contact preference',
+    //             'perm' => 'update_site_setting',
+    //             'index' => 0,
+    //             'options' => [
+    //                 'site-contact' => [
+    //                     'label' => 'Change settings',
+    //                     'route' => ['adminSiteSettingSingle',['group' => 'Contact']]
+    //                 ]
+    //             ]
+    //         ]
+    //     ]
+    // ]
 ];

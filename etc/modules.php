@@ -64,5 +64,6 @@ return [
     'lib-mailer' => 'https://github.com/getmim/lib-mailer.git',
     'site-contact' => 'https://github.com/getmim/site-contact.git',
     'admin-robot-txt' => 'https://github.com/getmim/admin-robot-txt.git',
-    'admin-setting' => 'https://github.com/getmim/admin-setting.git'
+    'admin-setting' => 'https://github.com/getmim/admin-setting.git',
+    'admin-site-setting' => 'https://github.com/getmim/admin-site-setting.git'
 ];

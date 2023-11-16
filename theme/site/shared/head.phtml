@@ -4,11 +4,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
 <?php
-    $title = $this->config->name;
+    $title = $this->setting->{'frontpage_title'} ?? $this->config->name;
     if(isset($_meta['title']))
         $title = $_meta['title'] . ' - ' . $title;
 ?>
 <title><?= $title ?></title>
+
+<?php if(isset($meta)) :?>
+<?= $this->meta->head($meta['head']) ?>
+<?php endif; ?>
 <!-- 
 <?php $csses = \AdminUi\Library\Assets::getAssets('css', 'head'); ?>
 <?php foreach($csses as $file => $version): ?>

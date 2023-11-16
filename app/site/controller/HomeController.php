@@ -55,7 +55,61 @@ class HomeController extends \Site\Controller
     }
 
     public function manifestAction(){
-        return '';
+        $json = '{
+            "version": "2.3",
+            "comment": "---Above version must be the same as data-pwa-version",
+            "lang" : "en",
+            "name" : "'.$this->setting->{'frontpage_title'}.'",
+            "scope" : "https://kelola-wisata.bisabanget.my.id/",
+            "display" : "fullscreen",
+            "start_url" : "https://kelola-wisata.bisabanget.my.id/",
+            "short_name" : "'.$this->setting->{'frontpage_title'}.'",
+            "description" : "",
+            "orientation" : "portrait",
+            "background_color": "#000000",
+            "theme_color": "#000000",
+            "generated" : "true",
+              "icons": [
+                {
+                  "src": "theme/site/static/favicon_io/16x16.png",
+                  "sizes": "16x16",
+                  "type": "image/png",
+                  "purpose": "any maskable"
+                },
+                {
+                  "src": "theme/site/static/favicon_io/32x32.png",
+                  "sizes": "32x32",
+                  "type": "image/png",
+                  "purpose": "any maskable"
+                },
+                {
+                  "src": "theme/site/static/favicon_io/192x192.png",
+                  "sizes": "192x192",
+                  "type": "image/png",
+                  "purpose": "any maskable"
+                },
+                {
+                  "src": "theme/site/static/favicon_io/192x192.png",
+                  "sizes": "144x144",
+                  "type": "image/png",
+                  "purpose": "any maskable"
+                },
+                {
+                  "src": "'.($this->setting->{'pwa_splashscreen'} ?? 'theme/site/static/favicon_io/512x512.png').'",
+                  "sizes": "512x512",
+                  "type": "image/png",
+                  "purpose": "any maskable"
+                },
+                {
+                  "src": "theme/site/static/favicon_io/favicon.ico",
+                  "sizes": "any"
+                }
+              ]
+            }';
+
+            $this->res->addHeader('Content-Type', 'application/json; charset=utf-8');
+            $this->res->addContent($json);
+            $this->res->send();
     }
 
     public function serviceWorkerAction(){
