@@ -129,19 +129,19 @@ return [
                     ]
                 ]
             ],
-            'site-pwa' => [
-                'label' => 'PWA',
-                'icon' => '<i class="fas fa-mobile-alt"></i>',
-                'info' => 'Change PWA preference',
-                'perm' => 'update_site_setting',
-                'index' => 0,
-                'options' => [
-                    'site-frontpage' => [
-                        'label' => 'Change settings',
-                        'route' => ['adminSiteSettingSingle',['group' => 'PWA']]
-                    ]
-                ]
-            ],
+            // 'site-pwa' => [
+            //     'label' => 'PWA',
+            //     'icon' => '<i class="fas fa-mobile-alt"></i>',
+            //     'info' => 'Change PWA preference',
+            //     'perm' => 'update_site_setting',
+            //     'index' => 0,
+            //     'options' => [
+            //         'site-frontpage' => [
+            //             'label' => 'Change settings',
+            //             'route' => ['adminSiteSettingSingle',['group' => 'PWA']]
+            //         ]
+            //     ]
+            // ],
             // 'site-social-accounts' => [
             //     'label' => 'Social Accounts',
             //     'icon' => '<i class="fas fa-share-alt-square"></i>',

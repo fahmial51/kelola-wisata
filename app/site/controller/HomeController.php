@@ -71,31 +71,31 @@ class HomeController extends \Site\Controller
             "generated" : "true",
               "icons": [
                 {
-                  "src": "'.($this->setting->{'pwa_splashscreen'} ?? 'theme/site/static/favicon_io/16x16.png').'",
+                  "src": "theme/site/static/favicon_io/16x16.png",
                   "sizes": "16x16",
                   "type": "image/png",
                   "purpose": "any maskable"
                 },
                 {
-                  "src": "'.($this->setting->{'pwa_splashscreen'} ?? 'theme/site/static/favicon_io/32x32.png').'",
+                  "src": "theme/site/static/favicon_io/32x32.png",
                   "sizes": "32x32",
                   "type": "image/png",
                   "purpose": "any maskable"
                 },
                 {
-                  "src": "'.($this->setting->{'pwa_splashscreen'} ?? 'theme/site/static/favicon_io/192x192.png').'",
+                  "src": "theme/site/static/favicon_io/192x192.png",
                   "sizes": "192x192",
                   "type": "image/png",
                   "purpose": "any maskable"
                 },
                 {
-                  "src": "'.($this->setting->{'pwa_splashscreen'} ?? 'theme/site/static/favicon_io/192x192.png').'",
+                  "src": "theme/site/static/favicon_io/192x192.png",
                   "sizes": "144x144",
                   "type": "image/png",
                   "purpose": "any maskable"
                 },
                 {
-                  "src": "'.($this->setting->{'pwa_splashscreen'} ?? 'theme/site/static/favicon_io/512x512.png').'",
+                  "src": "theme/site/static/favicon_io/512x512.png",
                   "sizes": "512x512",
                   "type": "image/png",
                   "purpose": "any maskable"
